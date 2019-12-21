@@ -4,11 +4,13 @@ package com.avio.config;
 import com.avio.config.prop.AppProps;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.io.support.ResourcePatternUtils;
 import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import javax.sql.DataSource;
+import java.io.IOException;
 
 @Log4j2
 @PropertySource("classpath:avio.app.properties")
@@ -23,6 +26,9 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan({"com.avio"})
 public class SpringWebConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private ResourceLoader resourceLoader;
 
     @Autowired
     private AppProps appProps;
@@ -39,6 +45,17 @@ public class SpringWebConfig implements WebMvcConfigurer {
         internalResourceViewResolver.setPrefix("/WEB-INF/jsp/");
         internalResourceViewResolver.setSuffix(".jsp");
         return internalResourceViewResolver;
+    }
+
+    @Bean
+    public PropertiesFactoryBean sqlQueries() {
+        PropertiesFactoryBean bean = new PropertiesFactoryBean();
+        try {
+            bean.setLocations(ResourcePatternUtils.getResourcePatternResolver(resourceLoader).getResources("classpath:/sql/*.xml"));
+        } catch (IOException e) {
+            log.error("", e);
+        }
+        return bean;
     }
 
     @Bean(name = "dataSource", destroyMethod = "")
