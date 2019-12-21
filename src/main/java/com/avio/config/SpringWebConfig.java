@@ -1,0 +1,50 @@
+package com.avio.config;
+
+
+import com.avio.config.prop.AppProps;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import javax.sql.DataSource;
+
+@Log4j2
+@PropertySource("classpath:avio.app.properties")
+@EnableWebMvc
+@Configuration
+@ComponentScan({"com.avio"})
+public class SpringWebConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private AppProps appProps;
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+
+    @Bean
+    public ViewResolver viewResolver() {
+        InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
+        internalResourceViewResolver.setPrefix("/WEB-INF/jsp/");
+        internalResourceViewResolver.setSuffix(".jsp");
+        return internalResourceViewResolver;
+    }
+
+    @Bean(name = "dataSource", destroyMethod = "")
+    public DataSource dataSource() {
+        final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
+        dsLookup.setResourceRef(true);
+        return dsLookup.getDataSource(appProps.getDatasourceJndiName());
+    }
+}
