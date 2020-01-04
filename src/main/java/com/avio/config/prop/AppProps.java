@@ -10,4 +10,8 @@ public class AppProps {
     @Getter
     @Value("${datasource.jndi.name}")
     private String datasourceJndiName;
+
+    @Getter
+    @Value("${airport.api.key}")
+    private String airportApiKey;
 }
