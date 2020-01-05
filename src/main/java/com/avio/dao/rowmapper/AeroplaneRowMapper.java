@@ -8,7 +8,7 @@ public class AeroplaneRowMapper extends AbstractMapper {
     @Override
     protected Object mapRow() throws SQLException {
         Aeroplane a = new Aeroplane();
-        a.setId(getLong("id"));
+        a.setId(getInteger("id"));
         a.setName(getString("name"));
         return a;
     }
