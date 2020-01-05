@@ -1,4 +1,4 @@
-package com.avio.dao.rowmapper;
+package com.avio.dao.util;
 
 
 import lombok.extern.log4j.Log4j2;

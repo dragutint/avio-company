@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="select.reservations">
+        <![CDATA[
+            SELECT * FROM aviodb.reservation;
+        ]]>
+    </entry>
+    <entry key="select.reservation.by.id">
+        <![CDATA[
+            SELECT * FROM aviodb.reservation r WHERE r.id = ?;
+        ]]>
+    </entry>
+</properties>

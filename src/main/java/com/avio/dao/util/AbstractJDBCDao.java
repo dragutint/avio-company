@@ -1,4 +1,4 @@
-package com.avio.dao;
+package com.avio.dao.util;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;

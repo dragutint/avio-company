@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="select.roles">
+        <![CDATA[
+            SELECT * FROM aviodb.role;
+        ]]>
+    </entry>
+    <entry key="select.role.by.id">
+        <![CDATA[
+            SELECT * FROM aviodb.role r WHERE r.id = ?;
+        ]]>
+    </entry>
+</properties>

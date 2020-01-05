@@ -2,9 +2,9 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-    <entry key="select.aeroplanes">
+    <entry key="select.airports">
         <![CDATA[
-            SELECT * FROM aeroplane;
+            SELECT * FROM aviodb.airport;
         ]]>
     </entry>
 </properties>
