@@ -3,15 +3,17 @@ package com.avio.dao.util;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
 
 @Log4j2
-public abstract class AbstractMapper<T> implements RowMapper<T> {
+public abstract class AbstractMapper<T> implements RowMapper<T>, Serializable {
 
     private ResultSet rs;
 

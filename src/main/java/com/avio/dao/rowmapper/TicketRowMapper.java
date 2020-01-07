@@ -5,13 +5,18 @@ import com.avio.dao.ReservationDao;
 import com.avio.dao.util.AbstractMapper;
 import com.avio.domain.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 
+@Component
 public class TicketRowMapper extends AbstractMapper {
     @Autowired
+    @Lazy
     private ReservationDao reservationDao;
     @Autowired
+    @Lazy
     private ClassTypeDao classTypeDao;
 
     @Override

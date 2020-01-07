@@ -2,9 +2,11 @@ package com.avio.dao.rowmapper;
 
 import com.avio.dao.util.AbstractMapper;
 import com.avio.domain.Pilot;
+import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 
+@Component
 public class PilotRowMapper extends AbstractMapper {
     @Override
     protected Object mapRow() throws SQLException {

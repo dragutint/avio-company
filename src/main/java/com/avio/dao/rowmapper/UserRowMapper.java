@@ -4,11 +4,15 @@ import com.avio.dao.RoleDao;
 import com.avio.dao.util.AbstractMapper;
 import com.avio.domain.administration.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 
+@Component
 public class UserRowMapper extends AbstractMapper {
     @Autowired
+    @Lazy
     private RoleDao roleDao;
 
     @Override

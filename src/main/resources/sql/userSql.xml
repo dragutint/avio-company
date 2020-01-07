@@ -9,7 +9,12 @@
     </entry>
     <entry key="select.user.by.id">
         <![CDATA[
-            SELECT * FROM aviodb.user u WHERE u.id = ?;
+            SELECT * FROM aviodb.user u WHERE u.id = ?
+        ]]>
+    </entry>
+    <entry key="select.user.by.username">
+        <![CDATA[
+            SELECT * FROM aviodb.user u WHERE u.username = ?
         ]]>
     </entry>
 </properties>
