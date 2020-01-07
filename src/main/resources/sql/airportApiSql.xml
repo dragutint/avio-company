@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="api.airport.select.term">
+        <![CDATA[
+            SELECT * FROM airportsdb.airport a WHERE (a.name LIKE ? OR a.iata_code LIKE ?) AND LENGTH(a.iata_code) > 2 ORDER BY a.iata_code ASC
+        ]]>
+    </entry>
+
+    <entry key="api.airport.select.iata">
+        <![CDATA[
+            SELECT * FROM airportsdb.airport a WHERE a.iata_code = ?
+        ]]>
+    </entry>
+</properties>

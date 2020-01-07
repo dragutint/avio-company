@@ -40,11 +40,11 @@ public class ExternalAPIController {
             JSONObject obj = res.getJSONObject(i);
             Airport a = new Airport();
 
-//            a.setCode(obj.getString("airportCode"));
-//            a.setName(obj.getString("airportName"));
-//
-//            if(a.getCode() != null && !a.getCode().isEmpty())
-//                airports.add(a);
+            a.setIata(obj.getString("airportCode"));
+            a.setName(obj.getString("airportName"));
+
+            if(a.getIata() != null && !a.getIata().isEmpty())
+                airports.add(a);
         }
 
         return airports;

@@ -4,6 +4,13 @@
 <head>
     <%@ include file="../includes/head.jsp" %>
     <title>List of aeroplanes</title>
+    <script>
+        $(document).ready(function () {
+            $('#tableAeroplanes').DataTable({
+                
+            });
+        });
+    </script>
 </head>
 <body>
 <%@ include file="../includes/header.jsp" %>
@@ -13,11 +20,26 @@
     </div>
 </div>
 <div class="container mt-3">
-    <ul class="list-group">
-        <c:forEach items="${aeroplanes}" var="aeroplane">
-            <li class="list-group-item">${aeroplane.id} ${aeroplane.name}</li>
-        </c:forEach>
-    </ul>
+    <table class="table" id="tableAeroplanes">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Economy capacity</th>
+                <th>Business capacity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${aeroplanes}" var="aeroplane">
+                <tr>
+                    <td class="table-cell">${aeroplane.id}</td>
+                    <td class="table-cell">${aeroplane.name}</td>
+                    <td class="table-cell">${aeroplane.capacityEc}</td>
+                    <td class="table-cell">${aeroplane.capacityBu}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
