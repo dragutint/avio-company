@@ -15,6 +15,6 @@ public class RoleDao extends AbstractJDBCDao {
     }
 
     public Role getById(Integer id){
-        return jdbcTemplate.queryForObject(queries.getSQL("select.role.by.id"), Role.class, new RoleRowMapper(), id);
+        return (Role) jdbcTemplate.queryForObject(queries.getSQL("select.role.by.id"), new RoleRowMapper(), id);
     }
 }
