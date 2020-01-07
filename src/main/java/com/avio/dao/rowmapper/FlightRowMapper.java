@@ -6,15 +6,21 @@ import com.avio.dao.PilotDao;
 import com.avio.dao.util.AbstractMapper;
 import com.avio.domain.Flight;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 
+@Component
 public class FlightRowMapper extends AbstractMapper {
     @Autowired
+    @Lazy
     private AeroplaneDao aeroplaneDao;
     @Autowired
+    @Lazy
     private AirportDao airportDao;
     @Autowired
+    @Lazy
     private PilotDao pilotDao;
 
     @Override

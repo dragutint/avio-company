@@ -16,7 +16,7 @@ public class UserDao extends AbstractJDBCDao {
     private UserRowMapper userRowMapper;
 
     public List<User> find() {
-        return jdbcTemplate.query(queries.getSQL("select.users"), new UserRowMapper());
+        return jdbcTemplate.query(queries.getSQL("select.users"), userRowMapper);
     }
 
     public User getById(Integer id){

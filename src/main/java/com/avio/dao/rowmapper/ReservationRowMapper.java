@@ -4,13 +4,18 @@ import com.avio.dao.*;
 import com.avio.dao.util.AbstractMapper;
 import com.avio.domain.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 
+@Component
 public class ReservationRowMapper extends AbstractMapper {
     @Autowired
+    @Lazy
     private FlightDao flightDao;
     @Autowired
+    @Lazy
     private ClientDao clientDao;
 
     @Override

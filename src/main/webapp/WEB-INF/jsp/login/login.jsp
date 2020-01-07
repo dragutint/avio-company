@@ -7,7 +7,7 @@
 <head>
 <%@ include file="../includes/head.jsp"%>
 
-<title>List of payments</title>
+<title>Login</title>
 
 </head>
 <body>
@@ -19,9 +19,10 @@
 		<div class="text-center">
 
 			<h1>
-				<i class="fa fa-book small-icons bk-color-brown"></i>Login page
+				<i class="fa fa-book small-icons bk-color-brown"></i>Login
 			</h1>
 			<c:url var="loginUrl" value="/login" />
+
 			<form:form method="POST" action="${loginUrl}">
 				<c:if test="${param.error != null}">
 					<div class="alert alert-danger">
