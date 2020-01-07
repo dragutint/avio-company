@@ -20,7 +20,7 @@
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value="/aeroplanes"/>">Aeroplanes</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="<c:url value=""/>">Option 2</a></li>
+					href="<c:url value="/flights"/>">Flight</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value=""/>">Option 3</a></li>
 
