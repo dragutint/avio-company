@@ -26,6 +26,12 @@
     <spring-security-version>5.1.4.RELEASE</spring-security-version>
     <postgre.version>9.4.1212</postgre.version>
     <fasterxml.jackson.version>2.10.1</fasterxml.jackson.version>
+    <webjars-font-awesome.version>5.1.0</webjars-font-awesome.version>
+    <webjars-select2.version>4.0.12</webjars-select2.version>
+    <webjars-select2-bootstrap.version>1.4.6</webjars-select2-bootstrap.version>
+    <webjars-datatables.version>1.10.19</webjars-datatables.version>
+    <webjars.tempus-dominus-bootstrap4.version>5.1.2</webjars.tempus-dominus-bootstrap4.version>
+
   </properties>
 
 
@@ -154,23 +160,29 @@
     <!-- WEB -->
     <dependency>
       <groupId>org.webjars</groupId>
-      <artifactId>jquery</artifactId>
-      <version>3.2.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.webjars</groupId>
       <artifactId>bootstrap</artifactId>
       <version>4.0.0-beta.3</version>
     </dependency>
+
     <dependency>
-      <groupId>org.webjars.bower</groupId>
-      <artifactId>popper.js</artifactId>
-      <version>1.12.9</version>
+      <groupId>org.webjars</groupId>
+      <artifactId>font-awesome</artifactId>
+      <version>${webjars-font-awesome.version}</version>
     </dependency>
     <dependency>
       <groupId>org.webjars</groupId>
-      <artifactId>openlayers</artifactId>
-      <version>4.5.0</version>
+      <artifactId>select2</artifactId>
+      <version>${webjars-select2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>select2-bootstrap-css</artifactId>
+      <version>${webjars-select2-bootstrap.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>datatables</artifactId>
+      <version>${webjars-datatables.version}</version>
     </dependency>
 
     <dependency>
@@ -190,11 +202,6 @@
       <artifactId>joda-time</artifactId>
       <version>2.9.9</version>
     </dependency>
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <version>${postgre.version}</version>
-    </dependency>
 
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -210,11 +217,6 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
       <version>${fasterxml.jackson.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.webjars.bower</groupId>
-      <artifactId>proj4</artifactId>
-      <version>2.4.3</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>

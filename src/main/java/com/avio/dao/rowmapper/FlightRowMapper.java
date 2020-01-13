@@ -1,7 +1,6 @@
 package com.avio.dao.rowmapper;
 
 import com.avio.dao.AeroplaneDao;
-import com.avio.dao.AirportDao;
 import com.avio.dao.PilotDao;
 import com.avio.dao.util.AbstractMapper;
 import com.avio.domain.Flight;
@@ -18,9 +17,6 @@ public class FlightRowMapper extends AbstractMapper {
     private AeroplaneDao aeroplaneDao;
     @Autowired
     @Lazy
-    private AirportDao airportDao;
-    @Autowired
-    @Lazy
     private PilotDao pilotDao;
 
     @Override
@@ -29,8 +25,8 @@ public class FlightRowMapper extends AbstractMapper {
         f.setId(getInteger("id"));
         f.setAeroplane(aeroplaneDao.getById(getInteger("aeroplane_id")));
         f.setPilot(pilotDao.getById(getInteger("pilot_id")));
-        f.setAirportDep(airportDao.getById(getInteger("airport_dep_id")));
-        f.setAirportArr(airportDao.getById(getInteger("airport_arr_id")));
+        f.setAirportDepIata(getString("airport_dep_iata"));
+        f.setAirportArrIata(getString("airport_arr_iata"));
         f.setDateCreated(getDate("date_created"));
         f.setDateUpdated(getDate("date_updated"));
         f.setDurationInMin(getInteger("duration"));

@@ -13,8 +13,8 @@ public class Flight {
     private Integer id;
     private Pilot pilot;
     private Aeroplane aeroplane;
-    private Airport airportDep;
-    private Airport airportArr;
+    private String airportDepIata;
+    private String airportArrIata;
     private String gate;
     private Integer durationInMin;
     private Date timeDep;

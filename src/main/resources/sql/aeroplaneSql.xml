@@ -7,4 +7,9 @@
             SELECT * FROM aviodb.aeroplane;
         ]]>
     </entry>
+    <entry key="select.aeroplane.by.id">
+        <![CDATA[
+            SELECT * FROM aviodb.aeroplane a WHERE a.id = ?
+        ]]>
+    </entry>
 </properties>

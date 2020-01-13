@@ -16,21 +16,31 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="airportFromSpan">From</span>
                     </div>
-                    <select type="text" name="airportFrom" id="airportFrom" class="form-control select2" aria-label="Default" aria-describedby="airportFromSpan"></select>
+                    <select type="text" required name="airportFrom" id="airportFrom" class="form-control select2" aria-label="Default" aria-describedby="airportFromSpan"></select>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="airportToSpan">&nbsp&nbsp&nbsp&nbspTo</span>
                     </div>
-                    <select type="text" name="airportTo" id="airportTo" class="form-control" aria-label="Default" aria-describedby="airportToSpan"></select>
+                    <select type="text" required name="airportTo" id="airportTo" class="form-control" aria-label="Default" aria-describedby="airportToSpan"></select>
+                </div>
+
+                <div class="input-group date">
+                    <input type="date" required name="dateFrom" id="dateFrom" class="form-control" />
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+
+                <div class="input-group date">
+                    <input type="date" name="dateTo" id="dateTo" class="form-control" />
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
                 </div>
 
                 <div class="input-group mb-3">
-                    <input type="date" name="date" id="date" class="form-control" aria-label="Default" />
-                </div>
-
-                <div class="input-group mb-3">
-                    <input type="submit" value="Search" class="form-control"/>
+                    <input type="submit" id="searchButton" value="Search" class="form-control"/>
                 </div>
             </form>
         </div>

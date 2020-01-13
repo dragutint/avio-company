@@ -14,12 +14,8 @@
 </head>
 <body>
 <%@ include file="../includes/header.jsp" %>
-<div class="jumbotron ">
-    <div class="container">
-        <h3>List of aeroplanes</h3>
-    </div>
-</div>
 <div class="container mt-3">
+    <h2 class="mb-3"><strong>List of aeroplanes</strong></h2>
     <table class="table" id="tableAeroplanes">
         <thead>
             <tr>

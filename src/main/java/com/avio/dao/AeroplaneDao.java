@@ -20,6 +20,6 @@ public class AeroplaneDao extends AbstractJDBCDao {
     }
 
     public Aeroplane getById(Integer id){
-        return (Aeroplane) jdbcTemplate.queryForObject(queries.getSQL("select.pilot.by.id"), aeroplaneRowMapper, id);
+        return (Aeroplane) jdbcTemplate.queryForObject(queries.getSQL("select.aeroplane.by.id"), aeroplaneRowMapper, id);
     }
 }

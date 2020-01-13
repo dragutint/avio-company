@@ -1,8 +1,6 @@
 package com.avio.service;
 
-import com.avio.dao.AeroplaneDao;
 import com.avio.dao.FlightDao;
-import com.avio.domain.Aeroplane;
 import com.avio.domain.Flight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,5 +15,10 @@ public class FlightService {
 
     public List<Flight> find() {
         return flightDao.find();
+    }
+
+    public void addNewFlight(Flight f){
+        // all validations, bl etc
+        flightDao.insert(f);
     }
 }

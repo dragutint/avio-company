@@ -18,12 +18,13 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="nav navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link"
+					href="<c:url value="/search"/>">Search</a></li>
+				<li class="nav-item"><a class="nav-link"
 					href="<c:url value="/aeroplanes"/>">Aeroplanes</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="<c:url value="/flights"/>">Flight</a></li>
+					href="<c:url value="/flights"/>">Flights</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="<c:url value=""/>">Option 3</a></li>
-
+					href="<c:url value="/new-flight"/>">New Flight</a></li>
 				<sec:authorize access="isAuthenticated()">
 					<li class="nav-item"><a class="nav-link"
 						href="<c:url value="/logout"/>">Logout</a>

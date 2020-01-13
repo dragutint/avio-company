@@ -9,7 +9,6 @@
                 "jQueryUI" : true,
                 "pagingType" : "full_numbers",
                 "lengthMenu" : [ [ 5, 10, 50, -1 ], [ 5, 10, 50, "All" ] ]
-                /* few more options are available to use */
             });
         });
     </script>
@@ -17,16 +16,10 @@
 </head>
 <body>
 <%@ include file="../includes/header.jsp" %>
-<div class="jumbotron ">
-    <div class="container">
-        <h3>List of flights</h3>
-    </div>
-</div>
-<div class="container mt-3">
+<div class="m-5">
     <table id="flightsTable" class="display datatable">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Pilot</th>
                 <th>Aeroplane</th>
                 <th>Departure</th>
@@ -35,30 +28,25 @@
                 <th>Duration</th>
                 <th>Time departure</th>
                 <th>Time arrival</th>
-                <th>Free seats in business class</th>
-                <th>Free seats in economy class</th>
-                <th>Date created</th>
-                <th>Date updated</th>
-                <th>Price for business class</th>
-                <th>Price for economy class</th>
+                <th>Free seats - BC</th>
+                <th>Free seats - EC</th>
+                <th>Price - BC</th>
+                <th>Price - EC</th>
             </tr>
         </thead>
         <tbody>
             <c:forEach items="${flights}" var="flight">
                 <tr>
-                    <td>${flight.id}</td>
-                    <td>${flight.pilot}</td>
-                    <td>${flight.aeroplane}</td>
-                    <td>${flight.airportDep}</td>
-                    <td>${flight.airportArr}</td>
+                    <td>${flight.pilot.firstName}&nbsp${flight.pilot.lastName}</td>
+                    <td>${flight.aeroplane.name}</td>
+                    <td>${flight.airportDepIata}</td>
+                    <td>${flight.airportArrIata}</td>
                     <td>${flight.gate}</td>
                     <td>${flight.durationInMin}</td>
                     <td>${flight.timeDep}</td>
                     <td>${flight.timeArr}</td>
                     <td>${flight.freeSeatsBu}</td>
                     <td>${flight.freeSeatsEc}</td>
-                    <td>${flight.dateCreated}</td>
-                    <td>${flight.dateUpdated}</td>
                     <td>${flight.priceBu}</td>
                     <td>${flight.priceEc}</td>
                 </tr>
