@@ -18,7 +18,8 @@ public class FlightService {
     }
 
     public void addNewFlight(Flight f){
-        // all validations, bl etc
+        // TODO all validations, bl etc
+
         flightDao.insert(f);
     }
 }

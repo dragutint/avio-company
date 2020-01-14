@@ -17,8 +17,11 @@
                 <div class="col-2">
                     <label for="airportFrom">Airport from</label>
                 </div>
-                <div class="col-10">
+                <div class="col-7">
                     <form:select path="airportDepIata" id="airportFrom" cssClass="form-control text-center" required="required"/>
+                </div>
+                <div class="col-3">
+                    <label class="timezoneFrom" id="timezoneFromId"></label>
                 </div>
             </div>
         </div>
@@ -28,8 +31,11 @@
                 <div class="col-2">
                     <label for="airportTo">Airport to</label>
                 </div>
-                <div class="col-10">
+                <div class="col-7">
                     <form:select path="airportArrIata" id="airportTo" cssClass="form-control text-center" required="required"/>
+                </div>
+                <div class="col-3">
+                    <label class="timezoneTo" id="timezoneToId"></label>
                 </div>
             </div>
         </div>
@@ -40,7 +46,7 @@
                     <label for="durationInMin">Duration of flight</label>
                 </div>
                 <div class="col-10">
-                    <form:input path="durationInMin" cssClass="form-control" placeholder="Enter estimated duration in minutes.." type="number" minlength="1" required="required"/>
+                    <form:input path="durationInMin" id="flightDuration" cssClass="form-control" placeholder="Enter estimated duration in minutes.." type="number" minlength="1" required="required"/>
                 </div>
             </div>
         </div>
@@ -50,12 +56,12 @@
                 <div class="col-2">
                     <label for="timeDep" class="mb-0">Department time</label>
                     <br>
-                    <small class="mt-0">Department airport timezone</small>
+                    <small class="mt-0 timezoneFrom"></small>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <div class="form-group">
                         <div class="input-group date" id="timeDepDateTimePicker" data-target-input="nearest">
-                            <form:input path="timeDep" type="text" cssClass="form-control datetimepicker-input" data-target="#timeDepDateTimePicker"/>
+                            <form:input path="timeDep" id="timeDep" type="text" cssClass="form-control datetimepicker-input" data-target="#timeDepDateTimePicker"/>
                             <div class="input-group-append" data-target="#timeDepDateTimePicker" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
@@ -63,14 +69,31 @@
                     </div>
                 </div>
                 <div class="col-2">
-                    <label for="timeDep">Arrival time</label>
+                    <button id="generateArrivalTime" class="form-control btn-info" type="button">Generate arrival</button>
                 </div>
-                <div class="col-4">
-                    <form:input path="timeArr" cssClass="form-control" type="datetime-local" required="required"/>
+                <div class="col-2">
+                    <label for="timeArr" class="mb-0">Arrival time</label>
+                    <br>
+                    <small class="mt-0 timezoneTo"></small>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <div class="input-group date" id="timeArrDateTimePicker" data-target-input="nearest">
+                            <form:input path="timeArr" id="timeArr" disabled="true" type="text" cssClass="form-control datetimepicker-input" data-target="#timeArrDateTimePicker"/>
+                            <div class="input-group-append" data-target="#timeArrDateTimePicker" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <script type="text/javascript">
                     $(function () {
-                        $('#timeDepDateTimePicker').datetimepicker();
+                        $('#timeDepDateTimePicker').datetimepicker({
+                            format: 'YYYY-MM-DDThh:mm'
+                        });
+                        $('#timeArrDateTimePicker').datetimepicker({
+                            format: 'YYYY-MM-DDThh:mm'
+                        });
                     });
                 </script>
             </div>
@@ -148,57 +171,6 @@
         </div>
     </form:form>
 </div>
+    <script src="<c:url value="/resources/js/flight/flight-form.js"/>"></script>
 </body>
-<script>
-    $('#airportFrom').select2({
-        placeholder: 'Search airports',
-        minimumInputLength: 2,
-        ajax: {
-            delay: 250,
-            url: function (params) {
-                return 'http://localhost:8085/aviocompany_war_exploded/api/airports/' + params.term;
-            },
-            dataType: 'json',
-            processResults: function (data) {
-                var results = [];
-                $.each(data || [], function() {
-                    results.push({
-                        id: this.iata_code,
-                        text: this.name + '[' + this.iata_code + ']'
-                    });
-                });
-                return {
-                    results: results
-                };
-            },
-            cache: true
-        }
-    });
-
-    $('#airportTo').select2({
-        placeholder: 'Search airports',
-        minimumInputLength: 2,
-        ajax: {
-            delay: 250,
-            url: function (params) {
-                return 'http://localhost:8085/aviocompany_war_exploded/api/airports/' + params.term;
-            },
-            dataType: 'json',
-            processResults: function (data) {
-                var results = [];
-                $.each(data || [], function() {
-                    results.push({
-                        id: this.iata_code,
-                        text: this.name + '[' + this.iata_code + ']'
-                    });
-                });
-                return {
-                    results: results
-                };
-            },
-            cache: true
-        }
-    });
-
-</script>
 </html>

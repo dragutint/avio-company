@@ -76,8 +76,10 @@ public class FlightController {
         return "flight/flight-form";
     }
 
-    @RequestMapping("/addFlight")
+    @PostMapping("/addFlight")
     public String addFlight(ModelMap model, @ModelAttribute Flight flight){
+        log.debug("Adding new flight: {}", flight);
+
         flightService.addNewFlight(flight);
         return "redirect:/search";
     }
