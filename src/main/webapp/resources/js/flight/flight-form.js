@@ -120,7 +120,7 @@ $('#generateArrivalTime').click(function () {
             var toTimezoneGeneratedTimestamp = response.toTimestamp;
             var momentDate = new moment(toTimezoneGeneratedTimestamp * 1000);
 
-            $('#timeArr').val(momentDate.format('YYYY-MM-DDTHH:mm'));
+            $('#timeArr').val(momentDate.format('YYYY-MM-DD HH:mm:ss'));
         },
         error: function (xhr) {
             console.log(xhr);

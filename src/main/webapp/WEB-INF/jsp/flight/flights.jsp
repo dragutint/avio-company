@@ -17,7 +17,7 @@
 <body>
 <%@ include file="../includes/header.jsp" %>
 <div class="m-5">
-    <table id="flightsTable" class="display datatable">
+    <table id="flightsTable" class="display datatable table">
         <thead>
             <tr>
                 <th>Pilot</th>

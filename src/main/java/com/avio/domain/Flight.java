@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 
 @Data
@@ -18,13 +17,10 @@ public class Flight {
     private String airportArrIata;
     private String gate;
     private Integer durationInMin;
-
-    @DateTimeFormat(pattern = "YYYY-MM-DD'T'hh:mm")
+    @DateTimeFormat(pattern = "YYYY-MM-DD HH:mm:ss")
     private Date timeDep;
-
-    @DateTimeFormat(pattern = "YYYY-MM-DD'T'hh:mm")
+    @DateTimeFormat(pattern = "YYYY-MM-DD HH:mm:ss")
     private Date timeArr;
-
     private Integer freeSeatsBu;
     private Integer freeSeatsEc;
     private Date dateCreated;

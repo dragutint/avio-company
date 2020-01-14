@@ -77,10 +77,11 @@
                     <small class="mt-0 timezoneTo"></small>
                 </div>
                 <div class="col-3">
+
                     <div class="form-group">
-                        <div class="input-group date" id="timeArrDateTimePicker" data-target-input="nearest">
-                            <form:input path="timeArr" id="timeArr" disabled="true" type="text" cssClass="form-control datetimepicker-input" data-target="#timeArrDateTimePicker"/>
-                            <div class="input-group-append" data-target="#timeArrDateTimePicker" data-toggle="datetimepicker">
+                        <div class="input-group">
+                            <form:input path="timeArr" id="timeArr" type="text" cssClass="form-control"/>
+                            <div class="input-group-append">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
                         </div>
@@ -89,10 +90,7 @@
                 <script type="text/javascript">
                     $(function () {
                         $('#timeDepDateTimePicker').datetimepicker({
-                            format: 'YYYY-MM-DDThh:mm'
-                        });
-                        $('#timeArrDateTimePicker').datetimepicker({
-                            format: 'YYYY-MM-DDThh:mm'
+                            format: 'YYYY-MM-DD HH:mm:ss'
                         });
                     });
                 </script>
