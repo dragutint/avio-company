@@ -41,4 +41,8 @@ public class FlightDao extends AbstractJDBCDao {
                     f.getPriceEc()
             });
     }
+
+    public List<Flight> find(String query) {
+        return jdbcTemplate.query(query, flightRowMapper);
+    }
 }

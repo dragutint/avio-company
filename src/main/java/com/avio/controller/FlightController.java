@@ -5,6 +5,7 @@ import com.avio.binders.PilotBinder;
 import com.avio.domain.Aeroplane;
 import com.avio.domain.Flight;
 import com.avio.domain.Pilot;
+import com.avio.domain.helper.SearchFilterForm;
 import com.avio.exception.EmptyResourcesException;
 import com.avio.service.AeroplaneService;
 import com.avio.service.FlightService;
@@ -12,6 +13,7 @@ import com.avio.service.PilotService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -35,19 +37,20 @@ public class FlightController {
     private FlightService flightService;
 
     @GetMapping("/search")
-    public String search() {
-
+    public String search(Model model) {
+        model.addAttribute("searchFilterForm", new SearchFilterForm());
         return "search/search";
     }
 
-    @GetMapping("/searchFlights")
-    public String searchResults(@RequestParam String airportFrom, @RequestParam String airportTo,
-                                @RequestParam String dateFrom, @RequestParam(required = false) String dateTo) {
+    @PostMapping("/searchFlights")
+    public String searchResults(Model model, @ModelAttribute SearchFilterForm searchFilterForm) {
 
-        // TODO implement search and return results
-        System.out.println(airportFrom);
+        log.debug("Doing search for criteria: {}", searchFilterForm);
 
-        return "search/search-results";
+        List<Flight> flights = flightService.search(searchFilterForm);
+        model.addAttribute("flights", flights);
+
+        return "flight/flights";
     }
 
     @RequestMapping("/flights")
@@ -62,12 +65,10 @@ public class FlightController {
         List<Pilot> pilots = pilotService.find();
         List<Aeroplane> aeroplanes = aeroplaneService.find();
 
-        if(pilots == null || pilots.size() == 0){
+        if(pilots == null || pilots.size() == 0)
             throw new EmptyResourcesException("You dont have pilots for your flight.");
-        }
-        if(aeroplanes == null || aeroplanes.size() == 0){
+        if(aeroplanes == null || aeroplanes.size() == 0)
             throw new EmptyResourcesException("You dont have aeroplanes for your flight.");
-        }
 
         model.addAttribute("pilots", pilots);
         model.addAttribute("aeroplanes", aeroplaneService.find());
@@ -83,8 +84,6 @@ public class FlightController {
         flightService.addNewFlight(flight);
         return "redirect:/search";
     }
-
-
 
     @ExceptionHandler(EmptyResourcesException.class)
     public ModelAndView handleError(HttpServletRequest req, EmptyResourcesException ex) {

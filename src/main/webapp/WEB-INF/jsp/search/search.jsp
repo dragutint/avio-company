@@ -10,39 +10,53 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-4">
-            <form method="get" action="searchFlights">
+            <form:form method="post" action="searchFlights" modelAttribute="searchFilterForm">
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="airportFromSpan">From</span>
                     </div>
-                    <select type="text" required name="airportFrom" id="airportFrom" class="form-control select2" aria-label="Default" aria-describedby="airportFromSpan"></select>
+                    <form:select path="fromIata" id="airportFrom" cssClass="form-control text-center" required="required"/>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="airportToSpan">&nbsp&nbsp&nbsp&nbspTo</span>
                     </div>
-                    <select type="text" required name="airportTo" id="airportTo" class="form-control" aria-label="Default" aria-describedby="airportToSpan"></select>
+                    <form:select path="toIata" id="airportTo" cssClass="form-control text-center" required="required"/>
                 </div>
 
-                <div class="input-group date">
-                    <input type="date" required name="dateFrom" id="dateFrom" class="form-control" />
-                    <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
+                <div class="form-group">
+                    <div class="input-group date" id="departureDateDateTimePicker" data-target-input="nearest">
+                        <form:input path="departureDate" id="departureDate" type="text" cssClass="form-control datetimepicker-input" data-target="#departureDateDateTimePicker"/>
+                        <div class="input-group-append" data-target="#departureDateDateTimePicker" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="input-group date">
-                    <input type="date" name="dateTo" id="dateTo" class="form-control" />
-                    <div class="input-group-addon">
-                        <span class="glyphicon glyphicon-th"></span>
+                <div class="form-group">
+                    <div class="input-group date" id="returnDateDateTimePicker" data-target-input="nearest">
+                        <form:input path="returnDate" id="returnDate" type="text" cssClass="form-control datetimepicker-input" data-target="#returnDateDateTimePicker"/>
+                        <div class="input-group-append" data-target="#returnDateDateTimePicker" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
                     </div>
                 </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#departureDateDateTimePicker').datetimepicker({
+                            format: 'YYYY-MM-DD'
+                        });
+                        $('#returnDateDateTimePicker').datetimepicker({
+                            format: 'YYYY-MM-DD'
+                        });
+                    });
+                </script>
 
                 <div class="input-group mb-3">
                     <input type="submit" id="searchButton" value="Search" class="form-control"/>
                 </div>
-            </form>
+            </form:form>
         </div>
     </div>
 </div>
