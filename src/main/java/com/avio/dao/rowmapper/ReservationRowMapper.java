@@ -1,6 +1,7 @@
 package com.avio.dao.rowmapper;
 
-import com.avio.dao.*;
+import com.avio.dao.ClientDao;
+import com.avio.dao.FlightDao;
 import com.avio.dao.util.AbstractMapper;
 import com.avio.domain.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;

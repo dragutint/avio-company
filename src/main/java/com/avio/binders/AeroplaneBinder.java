@@ -1,9 +1,7 @@
 package com.avio.binders;
 
 import com.avio.dao.AeroplaneDao;
-import com.avio.dao.PilotDao;
 import com.avio.domain.Aeroplane;
-import com.avio.domain.Pilot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
