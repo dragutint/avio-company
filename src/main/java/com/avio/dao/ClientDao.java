@@ -22,4 +22,9 @@ public class ClientDao extends AbstractJDBCDao {
     public Client getById(Integer id){
         return (Client) jdbcTemplate.queryForObject(queries.getSQL("select.client.by.id"), clientRowMapper, id);
     }
+
+    public Client getByUsername(String username) {
+        return (Client) jdbcTemplate.queryForObject(queries.getSQL("select.client.by.username"), clientRowMapper, username);
+
+    }
 }

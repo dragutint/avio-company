@@ -20,16 +20,19 @@
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value="/search"/>">Search</a></li>
 
-<%--				<sec:authorize access="hasAuthority('admin')">--%>
+				<sec:authorize access="hasAuthority('admin')">
 					<li class="nav-item"><a class="nav-link"
 						href="<c:url value="/aeroplanes"/>">Aeroplanes</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="<c:url value="/flights"/>">Flights</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="<c:url value="/new-flight"/>">New Flight</a></li>
-<%--				</sec:authorize>--%>
+				</sec:authorize>
 
 				<sec:authorize access="isAuthenticated()">
+					<li class="nav-item"><a class="nav-link"
+						href="<c:url value="/profile"/>">Profile</a>
+					</li>
 					<li class="nav-item"><a class="nav-link"
 						href="<c:url value="/logout"/>">Logout</a>
 					</li>

@@ -20,7 +20,7 @@ public class UserDao extends AbstractJDBCDao {
     }
 
     public User getById(Integer id){
-        return jdbcTemplate.queryForObject(queries.getSQL("select.user.by.id"), User.class, userRowMapper, id);
+        return (User) jdbcTemplate.queryForObject(queries.getSQL("select.user.by.id"), userRowMapper, id);
     }
 
     public User getByUsername(String username) {

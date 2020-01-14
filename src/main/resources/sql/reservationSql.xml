@@ -12,4 +12,14 @@
             SELECT * FROM aviodb.reservation r WHERE r.id = ?;
         ]]>
     </entry>
+    <entry key="select.reservations.by.client.username">
+        <![CDATA[
+            SELECT * FROM aviodb.reservation r
+            JOIN aviodb.client c
+            ON r.client_id = c.id
+            JOIN aviodb.user u
+            ON c.user_id = u.id
+            WHERE u.username = ?
+        ]]>
+    </entry>
 </properties>

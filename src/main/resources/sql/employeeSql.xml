@@ -2,21 +2,21 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-    <entry key="select.clients">
+    <entry key="select.employees">
         <![CDATA[
-            SELECT * FROM aviodb.client;
+            SELECT * FROM aviodb.employee;
         ]]>
     </entry>
-    <entry key="select.client.by.id">
+    <entry key="select.employee.by.id">
         <![CDATA[
-            SELECT * FROM aviodb.client c WHERE c.id = ?;
+            SELECT * FROM aviodb.employee e WHERE e.id = ?;
         ]]>
     </entry>
-    <entry key="select.client.by.username">
+    <entry key="select.employee.by.username">
         <![CDATA[
-            SELECT * FROM aviodb.client c
+            SELECT * FROM aviodb.employee e
             JOIN aviodb.user u
-            ON u.id = c.user_id
+            ON u.id = e.user_id
             WHERE u.username = ?
         ]]>
     </entry>

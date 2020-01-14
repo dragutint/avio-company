@@ -22,4 +22,8 @@ public class ReservationDao extends AbstractJDBCDao {
     public Reservation getById(Integer id){
         return (Reservation) jdbcTemplate.queryForObject(queries.getSQL("select.reservation.by.id"), reservationRowMapper, id);
     }
+
+    public List<Reservation> findByClientUsername(String username) {
+        return jdbcTemplate.query(queries.getSQL("select.reservations.by.client.username"), reservationRowMapper, username);
+    }
 }

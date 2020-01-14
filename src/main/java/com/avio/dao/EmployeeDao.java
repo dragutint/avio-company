@@ -22,4 +22,8 @@ public class EmployeeDao extends AbstractJDBCDao {
     public Employee getById(Integer id){
         return (Employee) jdbcTemplate.queryForObject(queries.getSQL("select.employee.by.id"), employeeRowMapper, id);
     }
+
+    public Employee getByUsername(String username) {
+        return (Employee) jdbcTemplate.queryForObject(queries.getSQL("select.employee.by.username"), employeeRowMapper, username);
+    }
 }
