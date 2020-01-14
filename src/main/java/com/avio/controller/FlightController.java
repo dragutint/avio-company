@@ -49,8 +49,9 @@ public class FlightController {
 
         List<Flight> flights = flightService.search(searchFilterForm);
         model.addAttribute("flights", flights);
+        model.addAttribute("searchFilterForm", searchFilterForm);
 
-        return "flight/flights";
+        return "search/search";
     }
 
     @RequestMapping("/flights")
