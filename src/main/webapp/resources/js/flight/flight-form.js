@@ -4,7 +4,7 @@ $('#airportFrom').select2({
     ajax: {
         delay: 250,
         url: function (params) {
-            return 'http://localhost:8085/aviocompany_war_exploded/api/airports/' + params.term;
+            return 'http://' + window.location.href + '/api/airports/' + params.term;
         },
         dataType: 'json',
         processResults: function (data) {
@@ -29,7 +29,7 @@ $('#airportTo').select2({
     ajax: {
         delay: 250,
         url: function (params) {
-            return 'http://localhost:8085/aviocompany_war_exploded/api/airports/' + params.term;
+            return 'http://' + window.location.href + '/api/airports/' + params.term;
         },
         dataType: 'json',
         processResults: function (data) {
@@ -64,7 +64,7 @@ function generateTimeZone(input, output){
     var lng;
 
     $.ajax({
-        url: 'http://localhost:8085/aviocompany_war_exploded/api/airports/iata/' + input.val(),
+        url: 'http://' + window.location.href + '/api/airports/iata/' + input.val(),
         dataType: 'json',
         success: function (data) {
 
