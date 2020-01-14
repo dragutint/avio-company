@@ -72,18 +72,30 @@
                         <h4>Flights available</h4>
                     </div>
                     <div class="card-body">
-                        <c:forEach items="${flights}" var="flight">
-                            <div class="row">
-                                <div class="col-3">
-                                    ${flight.timeDep.hours}:${flight.timeDep.minutes} - ${flight.timeArr.hours}:${flight.timeArr.minutes}
-                                </div>
-                                <div class="col-3">
-                                    ${flight.priceBu} | ${flight.priceEc}
-                                </div>
-                            </div>
-                        </c:forEach>
-                    </div>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <c:forEach items="${flights}" var="flightMapItem">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="flight-${flightMapItem.key.time}" data-toggle="tab" href="#flight-${flightMapItem.key.time}" role="tab" aria-controls="flight-${flightMapItem.key.time}" aria-selected="true">${flightMapItem.key.date}</a>
+                                </li>
+                            </c:forEach>
+                        </ul>
 
+                        <div class="tab-content" id="myTabContent">
+
+                            <c:forEach items="${flights}" var="flightMapItem">
+                                <div class="tab-pane fade show" id="flight-${flightMapItem.key.time}" role="tabpanel" aria-labelledby="flight-${flightMapItem.key.time}">
+                                    <c:forEach items="${flightMapItem.value}" var="flight">
+                                        <div class="row">
+                                            <div class="col-3">${flight.timeDep}</div>
+                                            <div class="col-3">${flight.timeArr}</div>
+                                            <div class="col-3">${flight.priceEc}</div>
+                                            <div class="col-3">${flight.priceBu}</div>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
                 </div>
             </c:if>
         </div>

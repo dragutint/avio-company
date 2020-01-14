@@ -12,8 +12,8 @@
 <script src="<c:url value="/webjars/datatables/1.10.19/js/dataTables.bootstrap4.min.js"/>"></script>
 
 <%--select2--%>
-<link rel="stylesheet" href="<c:url value="/webjars/select2/4.0.12/css/select2.min.css"/>"/>
 <script src="<c:url value="/webjars/select2/4.0.12/js/select2.min.js"/>"></script>
+<link rel="stylesheet" href="<c:url value="/webjars/select2/4.0.12/css/select2.min.css"/>"/>
 
 <%--font awesome--%>
 <link rel="stylesheet" href="<c:url value="/webjars/font-awesome/5.1.0/css/all.css"/>" />

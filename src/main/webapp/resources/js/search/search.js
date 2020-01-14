@@ -19,7 +19,10 @@ $('#airportFrom').select2({
                 results: results
             };
         },
-        cache: true
+        cache: true,
+        dropdownAutoWidth: true,
+        allowClear: true,
+        theme: "classic"
     }
 });
 
@@ -44,6 +47,9 @@ $('#airportTo').select2({
                 results: results
             };
         },
-        cache: true
+        cache: true,
+        dropdownAutoWidth: true,
+        allowClear: true,
+        theme: "classic"
     }
 });

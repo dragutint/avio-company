@@ -14,8 +14,6 @@
                 <a class="nav-link" id="flight-${flight.timeDep}" data-toggle="tab" href="#flight-${flight.timeDep}" role="tab" aria-controls="flight-${flight.timeDep}" aria-selected="true">${flight.timeDep}</a>
             </li>
         </c:forEach>
-
-
     </ul>
     <div class="tab-content" id="myTabContent">
         <c:forEach items="${flights}" var="flight">
@@ -26,9 +24,7 @@
                     <div class="col-3">${flight.priceEc}</div>
                 </div>
             </div>
-
         </c:forEach>
-
     </div>
 </div>
 

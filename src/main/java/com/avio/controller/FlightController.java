@@ -36,24 +36,6 @@ public class FlightController {
     @Autowired
     private FlightService flightService;
 
-    @GetMapping("/search")
-    public String search(Model model) {
-        model.addAttribute("searchFilterForm", new SearchFilterForm());
-        return "search/search";
-    }
-
-    @PostMapping("/searchFlights")
-    public String searchResults(Model model, @ModelAttribute SearchFilterForm searchFilterForm) {
-
-        log.debug("Doing search for criteria: {}", searchFilterForm);
-
-        List<Flight> flights = flightService.search(searchFilterForm);
-        model.addAttribute("flights", flights);
-        model.addAttribute("searchFilterForm", searchFilterForm);
-
-        return "search/search";
-    }
-
     @RequestMapping("/flights")
     public String flights(ModelMap model){
         List<Flight> flights = flightService.find();
