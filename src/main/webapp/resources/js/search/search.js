@@ -1,10 +1,12 @@
+var path = window.location.origin + window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+
 $('#airportFrom').select2({
     placeholder: 'Search airports',
     minimumInputLength: 2,
     ajax: {
         delay: 250,
         url: function (params) {
-            return 'http://' + window.location.href + '/api/airports/' + params.term;
+            return path + '/api/airports/' + params.term;
         },
         dataType: 'json',
         processResults: function (data) {
@@ -32,7 +34,7 @@ $('#airportTo').select2({
     ajax: {
         delay: 250,
         url: function (params) {
-            return 'http://' + window.location.href + '/api/airports/' + params.term;
+            return path + '/api/airports/' + params.term;
         },
         dataType: 'json',
         processResults: function (data) {
