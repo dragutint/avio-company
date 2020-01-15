@@ -65,7 +65,7 @@
                             <c:forEach items="${flights}" var="flightMapItem">
                                 <li class="nav-item">
                                     <a class="nav-link" id="flight-tab-${flightMapItem.key.time}" data-toggle="tab" href="#flight-${flightMapItem.key.time}" role="tab" aria-controls="flight-${flightMapItem.key.time}" aria-selected="true">
-                                        <fmt:formatDate value="${flightMapItem.key}" pattern="MM.dd.yyyy."/>
+                                        <fmt:formatDate value="${flightMapItem.key}" pattern="dd.MM.yyyy."/>
                                     </a>
                                 </li>
                             </c:forEach>

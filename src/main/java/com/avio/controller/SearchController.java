@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 @Controller
 @Log4j2
@@ -34,7 +35,7 @@ public class SearchController {
 
         log.debug("Doing search for criteria: {}", searchFilterForm);
 
-        HashMap<Date, List<Flight>> flights = flightService.search(searchFilterForm);
+        TreeMap<Date, List<Flight>> flights = flightService.search(searchFilterForm);
         model.addAttribute("flights", flights);
         model.addAttribute("searchFilterForm", searchFilterForm);
 

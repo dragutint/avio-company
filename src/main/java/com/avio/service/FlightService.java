@@ -8,10 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Log4j2
@@ -30,11 +27,11 @@ public class FlightService {
         flightDao.insert(f);
     }
 
-    public HashMap<Date, List<Flight>> search(SearchFilterForm searchFilterForm) {
+    public TreeMap<Date, List<Flight>> search(SearchFilterForm searchFilterForm) {
         return createHashMapOfList(searchForAllFlights(searchFilterForm));
     }
 
-    private HashMap<Date, List<Flight>> createHashMapOfList(List<Flight> flights){
+    private TreeMap<Date, List<Flight>> createHashMapOfList(List<Flight> flights){
         HashMap<Date, List<Flight>> map = new HashMap<>();
         List<Date> entered = new ArrayList<>();
         List<Flight> term = new ArrayList<>();
@@ -58,7 +55,13 @@ public class FlightService {
                 }
             }
         }
-        return map;
+
+        return sortMap(map);
+    }
+
+    private TreeMap<Date, List<Flight>> sortMap(HashMap<Date, List<Flight>> map) {
+        Map<Date, List<Flight>> treeMap = new TreeMap<>(map);
+        return (TreeMap<Date, List<Flight>>) treeMap;
     }
 
     private Date parseDateWithoutTime(Date d){
