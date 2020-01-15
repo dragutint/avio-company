@@ -55,3 +55,8 @@ $('#airportTo').select2({
         theme: "classic"
     }
 });
+
+$('.btnReserve').click(function () {
+    var flightid = $(this).data('flightid');
+    window.location.href = path + "/reserve/" + flightid;
+});

@@ -75,21 +75,58 @@
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <c:forEach items="${flights}" var="flightMapItem">
                                 <li class="nav-item">
-                                    <a class="nav-link" id="flight-${flightMapItem.key.time}" data-toggle="tab" href="#flight-${flightMapItem.key.time}" role="tab" aria-controls="flight-${flightMapItem.key.time}" aria-selected="true">${flightMapItem.key.date}</a>
+                                    <a class="nav-link" id="flight-tab-${flightMapItem.key.time}" data-toggle="tab" href="#flight-${flightMapItem.key.time}" role="tab" aria-controls="flight-${flightMapItem.key.time}" aria-selected="true">
+                                        <fmt:formatDate value="${flightMapItem.key}" pattern="MM.dd.yyyy."/>
+                                    </a>
                                 </li>
                             </c:forEach>
                         </ul>
-
                         <div class="tab-content" id="myTabContent">
-
                             <c:forEach items="${flights}" var="flightMapItem">
-                                <div class="tab-pane fade show" id="flight-${flightMapItem.key.time}" role="tabpanel" aria-labelledby="flight-${flightMapItem.key.time}">
+                                <div class="tab-pane fade show" id="flight-${flightMapItem.key.time}" role="tabpanel" aria-labelledby="flight-tab-${flightMapItem.key.time}">
+                                    <div class="row mt-2 mb-1">
+                                        <div class="col-2">DEPARTURE</div>
+                                        <div class="col-2">ARRIVAL</div>
+                                        <div class="col-2">ECONOMY</div>
+                                        <div class="col-2">BUSINESS</div>
+                                    </div>
                                     <c:forEach items="${flightMapItem.value}" var="flight">
-                                        <div class="row">
-                                            <div class="col-3">${flight.timeDep}</div>
-                                            <div class="col-3">${flight.timeArr}</div>
-                                            <div class="col-3">${flight.priceEc}</div>
-                                            <div class="col-3">${flight.priceBu}</div>
+                                        <div class="row mb-2 border-light">
+                                            <div class="col-2">
+                                                <span class="badge badge-primary">
+                                                    <h5>
+                                                        <fmt:formatDate value="${flight.timeDep}" pattern="HH:mm"/>h
+                                                    </h5>
+                                                </span>
+                                            </div>
+                                            <div class="col-2">
+                                                <span class="badge badge-primary">
+                                                    <h5>
+                                                       <fmt:formatDate value="${flight.timeArr}" pattern="HH:mm"/>h
+                                                    </h5>
+                                                </span>
+                                            </div>
+                                            <div class="col-2">
+                                                <span class="badge badge-success">
+                                                    <h5>
+                                                        ${flight.priceEc}
+                                                    </h5>
+                                                </span>
+                                            </div>
+                                            <div class="col-2">
+                                                <span class="badge badge-success">
+                                                    <h5>
+                                                        ${flight.priceBu}
+                                                    </h5>
+                                                </span>
+                                            </div>
+                                            <div class="col-2">
+                                                <button class="form-control btn btn-info btnReserve"
+                                                        data-flightid="${flight.id}"
+                                                        data-clientusername="${client-username}">
+                                                    Reserve!
+                                                </button>
+                                            </div>
                                         </div>
                                     </c:forEach>
                                 </div>

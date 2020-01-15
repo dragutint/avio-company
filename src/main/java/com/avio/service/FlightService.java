@@ -95,4 +95,8 @@ public class FlightService {
 
         return flightDao.find(stringBuilder.toString());
     }
+
+    public Flight getById(Integer flightId) {
+        return flightDao.getById(flightId);
+    }
 }
