@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="select.tickets">
+        <![CDATA[
+            SELECT * FROM aviodb.ticket;
+        ]]>
+    </entry>
+
+    <entry key="select.tickets.by.reservation">
+        <![CDATA[
+            SELECT * FROM aviodb.ticket t WHERE t.reservation_id = ?;
+        ]]>
+    </entry>
+
+    <entry key="insert.ticket">
+        <![CDATA[
+            INSERT INTO aviodb.ticket
+            (
+               first_name,
+               last_name,
+               passport_num,
+               price,
+               reservation_id,
+               flight_id,
+               class_type_id
+            )
+            VALUES(
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?
+            )
+        ]]>
+    </entry>
+</properties>

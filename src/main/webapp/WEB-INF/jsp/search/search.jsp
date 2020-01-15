@@ -38,20 +38,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="input-group date" id="returnDateDateTimePicker" data-target-input="nearest">
-                                <form:input path="returnDate" id="returnDate" type="text" cssClass="form-control datetimepicker-input" data-target="#returnDateDateTimePicker"/>
-                                <div class="input-group-append" data-target="#returnDateDateTimePicker" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
-                        </div>
                         <script type="text/javascript">
                             $(function () {
                                 $('#departureDateDateTimePicker').datetimepicker({
-                                    format: 'YYYY-MM-DD'
-                                });
-                                $('#returnDateDateTimePicker').datetimepicker({
                                     format: 'YYYY-MM-DD'
                                 });
                             });

@@ -6,17 +6,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Reservation {
     private Integer id;
-    private Flight flightFrom;
-    private Flight flightTo;
+    private Flight flight;
     private Client client;
     private Integer passengersNum;
-    private Boolean roundTrip;
     private Boolean payed;
     private Double price;
     private Date dateCreated;

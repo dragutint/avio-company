@@ -24,12 +24,10 @@ public class ReservationRowMapper extends AbstractMapper {
         Reservation r = new Reservation();
         r.setId(getInteger("id"));
         r.setClient(clientDao.getById(getInteger("client_id")));
-        r.setFlightFrom(flightDao.getById(getInteger("flight_from_id")));
-        r.setFlightTo(flightDao.getById(getInteger("flight_to_id")));
+        r.setFlight(flightDao.getById(getInteger("flight_id")));
         r.setDateCreated(getDate("date_created"));
         r.setPassengersNum(getInteger("passengers_num"));
         r.setPayed(getBoolean("payed"));
-        r.setRoundTrip(getBoolean("round_trip"));
         r.setPrice(getDouble("price"));
         return r;
     }

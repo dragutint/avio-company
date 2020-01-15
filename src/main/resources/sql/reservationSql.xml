@@ -22,4 +22,24 @@
             WHERE u.username = ?
         ]]>
     </entry>
+    <entry key="insert.reservation">
+        <![CDATA[
+            INSERT INTO aviodb.reservation
+                (client_id,
+                flight_id,
+                passengers_num,
+                date_created)
+            VALUES(
+                ?,
+                ?,
+                ?,
+                sysdate()
+            )
+        ]]>
+    </entry>
+    <entry key="update.price">
+        <![CDATA[
+        UPDATE aviodb.reservation r SET r.price = ? WHERE r.id = ?
+        ]]>
+    </entry>
 </properties>

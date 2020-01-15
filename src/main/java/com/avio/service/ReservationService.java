@@ -20,4 +20,16 @@ public class ReservationService {
     public List<Reservation> findByClientUsername(String username){
         return reservationDao.findByClientUsername(username);
     }
+
+    public void save(Reservation reservation) {
+        reservationDao.insert(reservation);
+    }
+
+    public Reservation getById(Integer reservationID) {
+        return reservationDao.getById(reservationID);
+    }
+
+    public void updatePrice(Reservation r) {
+        reservationDao.updatePrice(r);
+    }
 }

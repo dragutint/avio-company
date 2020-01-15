@@ -43,12 +43,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	http
         .authorizeRequests()
+                .anyRequest().permitAll()
 //        	.antMatchers("/reserve").hasAnyRole("admin", "client")
             .and()
         .formLogin()
             .loginPage("/login")
             .permitAll()
             .and()
-            .exceptionHandling().accessDeniedPage("/unauthorized-access");;
+            .exceptionHandling().accessDeniedPage("/unauthorized-access")
+        .and()
+            .csrf().disable().cors();
     }
 }

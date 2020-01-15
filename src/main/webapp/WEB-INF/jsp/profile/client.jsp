@@ -63,16 +63,28 @@
                     <h4>Your flights</h4>
                 </div>
                 <div class="card-body">
-                    <c:forEach var="reservation" items="${reservations}">
-                        <div class="row">
-                            <div class="col-5">
-                                ${reservation.price}
-                            </div>
-                            <div class="col-7">
-                                ${reservation}
-                            </div>
-                        </div>
-                    </c:forEach>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Departure</th>
+                                <th>Arrival</th>
+                                <th>Price</th>
+                                <th>Date</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="reservation" items="${reservations}">
+                                <tr>
+                                    <td>${reservation.flight.airportDepIata}</td>
+                                    <td>${reservation.flight.airportArrIata}</td>
+                                    <td>${reservation.price}</td>
+                                    <td>${reservation.dateCreated}</td>
+                                    <td><a href="reserve/preview/${reservation.id}"><button class="form-control btn btn-info">Preview</button></a></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </c:when>
