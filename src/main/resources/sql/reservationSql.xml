@@ -19,7 +19,7 @@
             ON r.client_id = c.id
             JOIN aviodb.user u
             ON c.user_id = u.id
-            WHERE u.username = ?
+            WHERE u.username = ? AND r.finished != 0
         ]]>
     </entry>
     <entry key="insert.reservation">
@@ -39,7 +39,7 @@
     </entry>
     <entry key="update.price">
         <![CDATA[
-        UPDATE aviodb.reservation r SET r.price = ? WHERE r.id = ?
+        UPDATE aviodb.reservation r SET r.price = ?, r.finished = 1 WHERE r.id = ?
         ]]>
     </entry>
 </properties>

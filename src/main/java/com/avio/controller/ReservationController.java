@@ -33,7 +33,7 @@ public class ReservationController {
 
 
     @GetMapping("/{flightId}")
-    @PreAuthorize("hasAnyAuthority('admin', 'client')")
+    @PreAuthorize("hasAnyAuthority('client')")
     public String reserve(Model model, @PathVariable Integer flightId){
         String username = LoginController.getPrincipal();
 

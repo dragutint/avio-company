@@ -29,13 +29,14 @@
                     <td><input id="first-name-<%= i %>" class="form-control"/></td>
                     <td><input id="last-name-<%= i %>" class="form-control"/></td>
                     <td>
-                        <select id="class-<%= i %>" class="form-control">
+
+                        <select id="class-<%= i %>" class="form-control classType" onchange="generatePrice(<%=((Reservation)request.getAttribute("reservation")).getFlight().getPriceEc()%>, <%=((Reservation)request.getAttribute("reservation")).getFlight().getPriceBu()%>, <%=i%>)">
                             <c:forEach items="${classtypes}" var="classType">
                                 <option value="${classType.id}">${classType.name}</option>
                             </c:forEach>
                         </select>
                     </td>
-                    <td><input id="price-<%= i %>" class="form-control" readonly/></td>
+                    <td><input id="price-<%= i %>" class="form-control" readonly value="<%=((Reservation)request.getAttribute("reservation")).getFlight().getPriceEc()%>"/></td>
                     <td><input id="passport-<%= i %>" class="form-control"/></td>
                 </tr>
             <% } %>

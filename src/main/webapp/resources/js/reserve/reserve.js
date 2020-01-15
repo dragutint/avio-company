@@ -32,3 +32,11 @@ $('#btnSavePassengers').click(function () {
         }
     });
 });
+
+function generatePrice(priceEc, priceBu, id) {
+    if($('.classType').val() == 1){
+        $('#price-' + id).val(priceEc);
+    } else {
+        $('#price-' + id).val(priceBu);
+    }
+}

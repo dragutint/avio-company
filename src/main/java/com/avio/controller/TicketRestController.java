@@ -49,7 +49,7 @@ public class TicketRestController {
     private void generatePrice(TicketDTO dto, Reservation r) {
         Double price = Double.valueOf(0);
         for(PassengerInfo pi : dto.getList()){
-            price += pi.getPrice();
+            price += pi.getPrice() != null ? pi.getPrice() : 0;
         }
         r.setPrice(price);
     }
