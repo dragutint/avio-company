@@ -4,7 +4,6 @@ import com.avio.domain.Flight;
 import com.avio.domain.Reservation;
 import com.avio.domain.Ticket;
 import com.avio.domain.administration.Client;
-import com.avio.domain.helper.SearchFilterForm;
 import com.avio.exception.EmptyResourcesException;
 import com.avio.service.*;
 import lombok.extern.log4j.Log4j2;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
