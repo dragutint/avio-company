@@ -13,6 +13,11 @@
             SELECT * FROM aviodb.ticket t WHERE t.reservation_id = ?;
         ]]>
     </entry>
+    <entry key="select.ticket.by.id">
+        <![CDATA[
+            SELECT * FROM aviodb.ticket t WHERE t.id = ?
+        ]]>
+    </entry>
 
     <entry key="insert.ticket">
         <![CDATA[

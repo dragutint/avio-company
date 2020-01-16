@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-8">
                 <div class="card">
                     <div class="card-header">
                         <h5>Passengers</h5>
@@ -49,6 +49,7 @@
                                     <th>Passport</th>
                                     <th>Class</th>
                                     <th>Price</th>
+                                    <th>Export</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,6 +61,11 @@
                                         <td>${ticket.passportNum}</td>
                                         <td>${ticket.classType.name}</td>
                                         <td>${ticket.price}</td>
+                                        <td>
+                                            <form:form action="ticket/download/${ticket.id}" method="post" id="downloadPDF">
+                                                <input id="submitId" type="submit" value="Ticket" class="form-control">
+                                            </form:form>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

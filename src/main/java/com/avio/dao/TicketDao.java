@@ -37,4 +37,8 @@ public class TicketDao extends AbstractJDBCDao {
     public List<Ticket> findTicketsByReservationId(Integer reservationId) {
         return jdbcTemplate.query(queries.getSQL("select.tickets.by.reservation"), ticketRowMapper, reservationId);
     }
+
+    public Ticket getById(Integer ticketId) {
+        return (Ticket) jdbcTemplate.queryForObject(queries.getSQL("select.ticket.by.id"), ticketRowMapper, ticketId);
+    }
 }

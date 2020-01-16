@@ -22,4 +22,8 @@ public class TicketService {
     public List<Ticket> findTicketsByReservationId(Integer reservationId) {
         return ticketDao.findTicketsByReservationId(reservationId);
     }
+
+    public Ticket getById(Integer ticketId) {
+        return ticketDao.getById(ticketId);
+    }
 }
