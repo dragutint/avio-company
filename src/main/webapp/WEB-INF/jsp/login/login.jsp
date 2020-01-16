@@ -47,7 +47,7 @@
 					value="${_csrf.token}" />
 				<br>
 				<input type="submit" name="login" value="Login"
-					class="btn btn-lg btn-default margintop10">
+					class="form-control btn btn-success mt-2 mb-2">
 			</form:form>
 		</div>
 	</div>

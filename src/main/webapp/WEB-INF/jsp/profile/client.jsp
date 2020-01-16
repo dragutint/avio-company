@@ -26,7 +26,7 @@
                     Date of birth
                 </div>
                 <div class="col-6">
-                    ${client.dateOfBirth}
+                    <fmt:formatDate value="${client.dateOfBirth}" pattern="DD.MM.YYYY." />
                 </div>
             </div>
             <div class="row">

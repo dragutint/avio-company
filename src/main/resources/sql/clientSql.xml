@@ -20,4 +20,27 @@
             WHERE u.username = ?
         ]]>
     </entry>
+    <entry key="insert.client">
+        <![CDATA[
+            INSERT INTO aviodb.client (first_name,
+                                        last_name,
+                                        date_of_birth,
+                                        gender,
+                                        email,
+                                        country,
+                                        contact,
+                                        passport_num,
+                                        user_id)
+                                    VALUES(
+                                        ?,
+                                        ?,
+                                        ?,
+                                        ?,
+                                        ?,
+                                        ?,
+                                        ?,
+                                        ?,
+                                        ?)
+        ]]>
+    </entry>
 </properties>

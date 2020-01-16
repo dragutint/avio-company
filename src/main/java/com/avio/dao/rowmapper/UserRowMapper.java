@@ -21,7 +21,7 @@ public class UserRowMapper extends AbstractMapper {
         u.setId(getInteger("id"));
         u.setUsername(getString("username"));
         u.setPassword(getString("password"));
-        u.setRole(roleDao.getById(getInteger("id")));
+        u.setRole(roleDao.getById(getInteger("role_id")));
         return u;
     }
 }

@@ -17,4 +17,10 @@
             SELECT * FROM aviodb.user u WHERE u.username = ?
         ]]>
     </entry>
+
+    <entry key="insert.user">
+        <![CDATA[
+            INSERT INTO aviodb.user (username, password, role_id) VALUES (?,?,?)
+        ]]>
+    </entry>
 </properties>

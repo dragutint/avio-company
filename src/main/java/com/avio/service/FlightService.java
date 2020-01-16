@@ -4,6 +4,7 @@ import com.avio.dao.FlightDao;
 import com.avio.domain.Flight;
 import com.avio.domain.helper.SearchFilterForm;
 import com.avio.exception.EmptyResourcesException;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,19 +17,30 @@ public class FlightService {
 
     @Autowired
     private FlightDao flightDao;
+    @Autowired
+    private CurrencyService currencyService;
+
 
     public List<Flight> find() {
         return flightDao.find();
     }
 
     public void addNewFlight(Flight f){
-        // TODO all validations, bl etc @Milica Nikolic
-
         flightDao.insert(f);
     }
 
-    public TreeMap<Date, List<Flight>> search(SearchFilterForm searchFilterForm) {
-        return createHashMapOfList(searchForAllFlights(searchFilterForm));
+    public TreeMap<Date, List<Flight>> search(SearchFilterForm searchFilterForm) throws UnirestException {
+        List<Flight> list = searchForAllFlights(searchFilterForm);
+        if(!searchFilterForm.getCurrency().equals("EUR"))
+            convertCurrencies(list, searchFilterForm.getCurrency());
+        return createHashMapOfList(list);
+    }
+
+    private void convertCurrencies(List<Flight> list, String currency) throws UnirestException {
+        for(Flight f : list){
+            f.setPriceEc(currencyService.convert("EUR", currency, f.getPriceEc()));
+            f.setPriceBu(currencyService.convert("EUR", currency, f.getPriceBu()));
+        }
     }
 
     private TreeMap<Date, List<Flight>> createHashMapOfList(List<Flight> flights){

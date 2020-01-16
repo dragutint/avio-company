@@ -27,4 +27,20 @@ public class ClientDao extends AbstractJDBCDao {
         return (Client) jdbcTemplate.queryForObject(queries.getSQL("select.client.by.username"), clientRowMapper, username);
 
     }
+
+    public void insert(Client c) {
+        jdbcTemplate.update(
+                queries.getSQL("insert.client"),
+                new Object[]{
+                    c.getFirstName(),
+                    c.getLastName(),
+                    c.getDateOfBirth(),
+                    c.getGender(),
+                    c.getEmail(),
+                    c.getCountry(),
+                    c.getContact(),
+                    c.getPassportNum(),
+                    c.getUser().getId()
+                });
+    }
 }

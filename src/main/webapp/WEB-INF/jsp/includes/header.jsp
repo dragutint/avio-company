@@ -40,6 +40,8 @@
 				<sec:authorize access="!isAuthenticated()">
 					<li class="nav-item"><a class="nav-link"
 						href="<c:url value="/login"/>">Login</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="<c:url value="/register"/>">Register</a></li>
 				</sec:authorize>
 			</ul>
 		</div>

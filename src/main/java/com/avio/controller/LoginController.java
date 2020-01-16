@@ -1,5 +1,11 @@
 package com.avio.controller;
 
+import com.avio.domain.administration.Client;
+import com.avio.domain.administration.Role;
+import com.avio.domain.administration.User;
+import com.avio.service.ClientService;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,6 +13,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,7 +21,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
+@Log4j2
 public class LoginController {
+	@Autowired
+	private ClientService clientService;
 	
 	@GetMapping("/login")
 	public String loginForma() {
@@ -34,6 +44,30 @@ public class LoginController {
 	public String unauthorizedAccess(Model model) {
 		
 		return "login/unauthorized-access";
+	}
+
+
+	@RequestMapping("/register")
+	public String register(Model model){
+		Client c = new Client();
+		User u = new User();
+		u.setRole(new Role(2, "client"));
+		c.setUser(u);
+
+		model.addAttribute("client", c);
+
+		return "login/register";
+	}
+
+	@RequestMapping("/saveClient")
+	public String saveClient(Model model, @ModelAttribute Client c){
+
+		c.getUser().setRole(new Role(2, ""));
+
+		log.debug("New client is registered: {}", c);
+		clientService.save(c);
+
+		return "redirect:/login";
 	}
 	
 	public static String getPrincipal(){

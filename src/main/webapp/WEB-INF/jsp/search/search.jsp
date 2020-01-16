@@ -38,6 +38,17 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="currencySpan">Currency</span>
+                                <form:select path="currency" cssClass="form-control">
+                                    <c:forEach items="${currencies}" var="currency" >
+                                        <form:option value="${currency}">${currency}</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </div>
+                        </div>
+
                         <script type="text/javascript">
                             $(function () {
                                 $('#departureDateDateTimePicker').datetimepicker({
@@ -98,14 +109,14 @@
                                             <div class="col-2">
                                                 <span class="badge badge-success">
                                                     <h5>
-                                                        ${flight.priceEc}
+                                                        <fmt:formatNumber value="${flight.priceEc}" maxFractionDigits="2" />
                                                     </h5>
                                                 </span>
                                             </div>
                                             <div class="col-2">
                                                 <span class="badge badge-success">
                                                     <h5>
-                                                        ${flight.priceBu}
+                                                        <fmt:formatNumber value="${flight.priceBu}" maxFractionDigits="2" />
                                                     </h5>
                                                 </span>
                                             </div>

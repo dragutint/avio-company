@@ -11,4 +11,7 @@ public class AppProps {
     @Value("${datasource.jndi.name}")
     private String datasourceJndiName;
 
+    @Getter
+    @Value("${currency.api.key}")
+    private String currencyApiKey;
 }
