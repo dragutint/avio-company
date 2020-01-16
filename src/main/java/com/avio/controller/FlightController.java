@@ -52,7 +52,7 @@ public class FlightController {
             throw new EmptyResourcesException("You dont have aeroplanes for your flight.");
 
         model.addAttribute("pilots", pilots);
-        model.addAttribute("aeroplanes", aeroplaneService.find());
+        model.addAttribute("aeroplanes", aeroplanes);
         model.addAttribute("flight", new Flight());
 
         return "flight/flight-form";

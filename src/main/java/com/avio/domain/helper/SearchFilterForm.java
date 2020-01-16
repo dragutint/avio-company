@@ -15,6 +15,4 @@ public class SearchFilterForm {
     private String toIata;
     @DateTimeFormat(pattern = "YYYY-MM-DD")
     private Date departureDate;
-    @DateTimeFormat(pattern = "YYYY-MM-DD")
-    private Date returnDate;
 }
