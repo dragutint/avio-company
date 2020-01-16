@@ -62,7 +62,6 @@ public class TicketRestController {
             t.setReservation(r);
             t.setFirstName(pi.getFirstName());
             t.setLastName(pi.getLastName());
-            t.setFlightId(r.getFlight().getId());
             t.setPrice(pi.getPrice());
             t.setPassportNum(pi.getPassport());
             t.setClassType(classTypeService.getById(pi.getClassType()));

@@ -7,7 +7,9 @@
     <script>
         $(document).ready(function () {
             $('#tableAeroplanes').DataTable({
-                
+                "jQueryUI" : true,
+                "pagingType" : "full_numbers",
+                "lengthMenu" : [ [ 5, 10], [ 5, 10] ]
             });
         });
     </script>
@@ -36,6 +38,8 @@
             </c:forEach>
         </tbody>
     </table>
+    <%@ include file="../includes/footer.jsp" %>
+
 </div>
 </body>
 </html>

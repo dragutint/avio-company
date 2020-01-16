@@ -29,7 +29,6 @@ public class TicketDao extends AbstractJDBCDao {
                     t.getPassportNum(),
                     t.getPrice(),
                     t.getReservation().getId(),
-                    t.getFlightId(),
                     t.getClassType().getId()
             });
     }

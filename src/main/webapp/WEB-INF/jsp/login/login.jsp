@@ -18,9 +18,9 @@
 
 		<div class="text-center">
 
-			<h1>
-				<i class="fa fa-book small-icons bk-color-brown"></i>Login
-			</h1>
+			<h3>
+				<i class="fa fa-user"></i> Login
+			</h3>
 			<c:url var="loginUrl" value="/login" />
 
 			<form:form method="POST" action="${loginUrl}">
@@ -51,5 +51,6 @@
 			</form:form>
 		</div>
 	</div>
+	<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

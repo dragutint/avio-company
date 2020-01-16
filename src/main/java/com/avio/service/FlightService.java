@@ -9,6 +9,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 @Service
@@ -31,6 +33,10 @@ public class FlightService {
 
     public TreeMap<Date, List<Flight>> search(SearchFilterForm searchFilterForm) throws UnirestException {
         List<Flight> list = searchForAllFlights(searchFilterForm);
+        if(list == null || list.size() == 0)
+            throw new EmptyResourcesException("There is no flights for this criteria");
+
+
         if(!searchFilterForm.getCurrency().equals("EUR"))
             convertCurrencies(list, searchFilterForm.getCurrency());
         return createHashMapOfList(list);
@@ -88,7 +94,7 @@ public class FlightService {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("SELECT * FROM aviodb.flight f ");
 
-        stringBuilder.append("WHERE ");
+        stringBuilder.append("WHERE f.time_dep >= SYSDATE() AND ");
 
         if(searchFilterForm.getFromIata() == null){
             throw new EmptyResourcesException("You have not entered departure airport");
@@ -104,6 +110,14 @@ public class FlightService {
         } else {
             stringBuilder.append("f.airport_arr_iata = ");
             stringBuilder.append("'" + searchFilterForm.getToIata() + "'");
+        }
+
+        if(searchFilterForm.getDepartureDate() != null){
+            LocalDate localDate = searchFilterForm.getDepartureDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            stringBuilder.append(" AND ");
+            stringBuilder.append("DAYOFMONTH(f.time_dep) = " + localDate.getDayOfMonth() +
+                    " AND MONTH(f.time_dep) = " + localDate.getMonthValue() +
+                    " AND YEAR(f.time_dep) = " + localDate.getYear());
         }
 
         log.debug("Query generated: {}", stringBuilder.toString());

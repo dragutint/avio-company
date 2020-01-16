@@ -5,10 +5,10 @@
     <%@ include file="../includes/head.jsp" %>
     <script>
         $(document).ready(function() {
-            var table = $('#flightsTable').dataTable({
+            $('#flightsTable').dataTable({
                 "jQueryUI" : true,
                 "pagingType" : "full_numbers",
-                "lengthMenu" : [ [ 5, 10, 50, -1 ], [ 5, 10, 50, "All" ] ]
+                "lengthMenu" : [ [ 5, 10, 50], [ 5, 10, 50] ]
             });
         });
     </script>
@@ -44,12 +44,13 @@
                     <td>${flight.timeArr}</td>
                     <td>
                         <button class="btn btn-danger deleteFlight" data-flightid="${flight.id}"><i class="fa fa-trash"></i></button>
-                        <button class="btn btn-info changeFlight" data-flightid="${flight.id}"><i class="fa fa-cog"></i></button>
                     </td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
+    <%@ include file="../includes/footer.jsp" %>
+
 </div>
 <script src="<c:url value="/resources/js/flight/flight.js"/>"></script>
 </body>

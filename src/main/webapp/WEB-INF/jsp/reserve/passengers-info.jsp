@@ -52,6 +52,7 @@
             </button>
         </div>
     </div>
+    <%@ include file="../includes/footer.jsp" %>
 </div>
 
 <script src="<c:url value="/resources/js/reserve/reserve.js"/>"></script>

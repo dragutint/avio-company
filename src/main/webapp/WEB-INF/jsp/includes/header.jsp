@@ -18,30 +18,30 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="nav navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link"
-					href="<c:url value="/search"/>">Search</a></li>
+					href="<c:url value="/search"/>"><i class="fas fa-search"></i> Search</a></li>
 
 				<sec:authorize access="hasAuthority('admin')">
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value="/aeroplanes"/>">Aeroplanes</a></li>
+						href="<c:url value="/aeroplanes"/>"><i class="fas fa-paper-plane"></i> Aeroplanes</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value="/flights"/>">Flights</a></li>
+						href="<c:url value="/flights"/>"><i class="fas fa-plane"></i> Flights</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value="/new-flight"/>">New Flight</a></li>
+						href="<c:url value="/new-flight"/>"><i class="fas fa-plus"></i> New Flight</a></li>
 				</sec:authorize>
 
 				<sec:authorize access="isAuthenticated()">
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value="/profile"/>">Profile</a>
+						href="<c:url value="/profile"/>"><i class="fas fa-user"></i> Profile</a>
 					</li>
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value="/logout"/>">Logout</a>
+						href="<c:url value="/logout"/>"><i class="fas fa-user-minus"></i> Logout</a>
 					</li>
 				</sec:authorize>
 				<sec:authorize access="!isAuthenticated()">
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value="/login"/>">Login</a></li>
+						href="<c:url value="/login"/>"><i class="fas fa-user"></i> Login</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value="/register"/>">Register</a></li>
+						href="<c:url value="/register"/>"><i class="fas fa-user-edit"></i> Register</a></li>
 				</sec:authorize>
 			</ul>
 		</div>

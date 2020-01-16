@@ -149,6 +149,8 @@
             </button>
         </div>
     </form:form>
+    <%@ include file="../includes/footer.jsp" %>
+
 </div>
 <script src="<c:url value="/resources/js/flight/flight-form.js"/>"></script>
 </body>

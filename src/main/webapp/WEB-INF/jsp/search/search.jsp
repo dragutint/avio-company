@@ -18,13 +18,13 @@
                     <div class="card-body">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="airportFromSpan">From</span>
+                                <span class="input-group-text" id="airportFromSpan"><i class="fas fa-plane-departure"></i></span>
                             </div>
                             <form:select path="fromIata" id="airportFrom" cssClass="form-control text-center" required="required"/>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="airportToSpan">&nbsp&nbsp&nbsp&nbspTo</span>
+                                <span class="input-group-text" id="airportToSpan"><i class="fas fa-plane-arrival"></i></span>
                             </div>
                             <form:select path="toIata" id="airportTo" cssClass="form-control text-center" required="required"/>
                         </div>
@@ -66,6 +66,19 @@
             </div>
         </div>
         <div class="col-8">
+            <c:if test="${empty error && empty flights}" >
+
+            </c:if>
+
+            <c:if test="${not empty error}">
+                <div class="alert alert-warning" role="alert">
+                <h4 class="alert-heading">We're sorry</h4>
+                <p>The flights you're searching for are not available, try a different date or some of our partner companies</p>
+                <hr>
+                <p><a href="https://www.wizzair.com">Wizz Air</a></p>
+                </div>
+            </c:if>
+
             <c:if test="${flights.size() != 0 && not empty flights}">
                 <div class="card" id="resultsCard">
                     <div class="card-header">
@@ -138,6 +151,7 @@
         </div>
     </div>
 </div>
+<%@ include file="../includes/footer.jsp" %>
 </body>
 <script src="<c:url value="/resources/js/search/search.js"/>"></script>
 </html>

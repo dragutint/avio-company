@@ -28,11 +28,9 @@
                passport_num,
                price,
                reservation_id,
-               flight_id,
                class_type_id
             )
             VALUES(
-                ?,
                 ?,
                 ?,
                 ?,

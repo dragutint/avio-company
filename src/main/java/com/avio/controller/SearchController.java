@@ -2,6 +2,7 @@ package com.avio.controller;
 
 import com.avio.domain.Flight;
 import com.avio.domain.helper.SearchFilterForm;
+import com.avio.exception.EmptyResourcesException;
 import com.avio.service.CurrencyService;
 import com.avio.service.FlightService;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import sun.invoke.empty.Empty;
 
 import java.util.Date;
 import java.util.List;
@@ -39,12 +41,17 @@ public class SearchController {
 
         log.debug("Doing search for criteria: {}", searchFilterForm);
 
-        TreeMap<Date, List<Flight>> flights = flightService.search(searchFilterForm);
-        model.addAttribute("flights", flights);
-        model.addAttribute("searchFilterForm", searchFilterForm);
-        model.addAttribute("currencies", currencyService.getAllCurrencies());
+        try {
+            TreeMap<Date, List<Flight>> flights = flightService.search(searchFilterForm);
+            model.addAttribute("flights", flights);
+            model.addAttribute("searchFilterForm", searchFilterForm);
+        } catch (EmptyResourcesException e){
+            model.addAttribute("error", e.getMessage());
+        } finally {
+            model.addAttribute("currencies", currencyService.getAllCurrencies());
+            return "search/search";
+        }
 
-        return "search/search";
     }
 
     @ModelAttribute("searchFilterForm")

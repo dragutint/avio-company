@@ -12,5 +12,6 @@
         <div class="h2">${exception.getMessage()}</div>
     </div>
 </div>
+<%@ include file="includes/footer.jsp" %>
 </body>
 </html>

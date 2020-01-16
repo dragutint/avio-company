@@ -17,9 +17,4 @@ $('.deleteFlight').click(function () {
     })
 });
 
-$('.changeFlight').click(function () {
-    var fightid = $(this).data('flightid');
-
-
-});
 

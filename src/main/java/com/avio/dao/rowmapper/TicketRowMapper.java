@@ -27,7 +27,6 @@ public class TicketRowMapper extends AbstractMapper {
         t.setLastName(getString("last_name"));
         t.setClassType(classTypeDao.getById(getInteger("class_type_id")));
         t.setPassportNum(getLong("passport_num"));
-        t.setFlightId(getInteger("flight_id"));
         t.setPrice(getDouble("price"));
         t.setReservation(reservationDao.getById(getInteger("reservation_id")));
         return t;

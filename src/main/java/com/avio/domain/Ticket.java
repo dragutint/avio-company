@@ -14,6 +14,5 @@ public class Ticket {
     private Double price;
     private Long passportNum;
     private Reservation reservation;
-    private Integer flightId;
     private ClassType classType;
 }

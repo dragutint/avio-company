@@ -6,12 +6,9 @@
 <html lang="en">
 <head>
 <link rel="stylesheet"
-	href="<c:url value="/webjars/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"/>">
 
-<script src="<c:url value="/webjars/jquery/3.2.1/jquery.min.js"/>"></script>
-<script
-	src="<c:url value="/webjars/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"/>"></script>
 
+<%@ include file="../includes/head.jsp"%>
 <title>List of payments</title>
 
 </head>
@@ -29,5 +26,7 @@
 			<h4>Sorry, you are not authorized for this page. <a href="<c:url value="/" /> ">Go back</a></h4>
 		</div>
 	</div>
+	<%@ include file="../includes/footer.jsp" %>
+
 </body>
 </html>
