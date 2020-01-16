@@ -67,7 +67,7 @@
         </div>
         <div class="col-8">
             <c:if test="${empty error && empty flights}" >
-
+                <img src="<c:url value="/resources/img/love.jpeg" />" alt="" height="50%" width="100%">
             </c:if>
 
             <c:if test="${not empty error}">
