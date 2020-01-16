@@ -102,4 +102,8 @@ public class FlightService {
     public Flight getById(Integer flightId) {
         return flightDao.getById(flightId);
     }
+
+    public String delete(Integer flightId) {
+        return flightDao.delete(flightId);
+    }
 }

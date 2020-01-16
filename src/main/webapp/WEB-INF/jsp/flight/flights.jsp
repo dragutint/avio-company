@@ -5,7 +5,7 @@
     <%@ include file="../includes/head.jsp" %>
     <script>
         $(document).ready(function() {
-            $('#flightsTable').dataTable({
+            var table = $('#flightsTable').dataTable({
                 "jQueryUI" : true,
                 "pagingType" : "full_numbers",
                 "lengthMenu" : [ [ 5, 10, 50, -1 ], [ 5, 10, 50, "All" ] ]
@@ -28,15 +28,12 @@
                 <th>Duration</th>
                 <th>Time departure</th>
                 <th>Time arrival</th>
-                <th>Free seats - BC</th>
-                <th>Free seats - EC</th>
-                <th>Price - BC</th>
-                <th>Price - EC</th>
+                <th>Options</th>
             </tr>
         </thead>
         <tbody>
             <c:forEach items="${flights}" var="flight">
-                <tr>
+                <tr id="flight-${flight.id}">
                     <td>${flight.pilot.firstName}&nbsp${flight.pilot.lastName}</td>
                     <td>${flight.aeroplane.name}</td>
                     <td>${flight.airportDepIata}</td>
@@ -45,15 +42,15 @@
                     <td>${flight.durationInMin}</td>
                     <td>${flight.timeDep}</td>
                     <td>${flight.timeArr}</td>
-                    <td>${flight.freeSeatsBu}</td>
-                    <td>${flight.freeSeatsEc}</td>
-                    <td>${flight.priceBu}</td>
-                    <td>${flight.priceEc}</td>
+                    <td>
+                        <button class="btn btn-danger deleteFlight" data-flightid="${flight.id}"><i class="fa fa-trash"></i></button>
+                        <button class="btn btn-info changeFlight" data-flightid="${flight.id}"><i class="fa fa-cog"></i></button>
+                    </td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
 </div>
-
+<script src="<c:url value="/resources/js/flight/flight.js"/>"></script>
 </body>
 </html>

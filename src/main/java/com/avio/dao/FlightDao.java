@@ -5,6 +5,8 @@ import com.avio.dao.util.AbstractJDBCDao;
 import com.avio.domain.Flight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -44,5 +46,15 @@ public class FlightDao extends AbstractJDBCDao {
 
     public List<Flight> find(String query) {
         return jdbcTemplate.query(query, flightRowMapper);
+    }
+
+    public String delete(Integer flightId) {
+        try {
+            jdbcTemplate.update(queries.getSQL("delete.flight"), flightId);
+            return "success";
+        } catch (DataAccessException e) {
+            return e.getMessage();
+        }
+
     }
 }

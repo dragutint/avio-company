@@ -66,6 +66,13 @@ public class FlightController {
         return "redirect:/search";
     }
 
+    @ResponseBody
+    @DeleteMapping("/flight/delete/{flightId}")
+    public String deleteFlight(@PathVariable Integer flightId){
+        log.debug("Deleting flight: {}", flightId);
+        return flightService.delete(flightId);
+    }
+
     @ExceptionHandler(EmptyResourcesException.class)
     public ModelAndView handleError(HttpServletRequest req, EmptyResourcesException ex) {
         log.error("Error: {}", ex.getMessage());

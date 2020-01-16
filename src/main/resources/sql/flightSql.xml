@@ -7,9 +7,17 @@
             SELECT * FROM aviodb.flight;
         ]]>
     </entry>
+
     <entry key="select.flight.by.id">
         <![CDATA[
-            SELECT * FROM aviodb.flight f WHERE f.id = ?;
+            SELECT * FROM aviodb.flight f WHERE f.id = ?
+        ]]>
+    </entry>
+
+    <entry key="delete.flight">
+        <![CDATA[
+            DELETE FROM aviodb.flight
+            WHERE id = ?
         ]]>
     </entry>
 
