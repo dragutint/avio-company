@@ -1,7 +1,7 @@
 package com.avio.config.security;
 
-import com.avio.dao.UserDao;
-import com.avio.domain.administration.User;
+import com.avio.bl.dao.UserDao;
+import com.avio.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

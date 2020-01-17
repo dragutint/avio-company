@@ -1,6 +1,5 @@
 package com.avio.domain;
 
-import com.avio.domain.administration.Client;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
