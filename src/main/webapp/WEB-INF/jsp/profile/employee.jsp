@@ -15,7 +15,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-4 offset-1">
-                    Email
+                    <i class="fas fa-envelope"></i> Email
                 </div>
                 <div class="col-6">
                     ${employee.email}

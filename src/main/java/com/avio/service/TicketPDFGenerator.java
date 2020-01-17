@@ -69,7 +69,7 @@ public class TicketPDFGenerator {
         preface.add(new Paragraph("Price: " + ticket.getPrice(), TIME_ROMAN_SMALL));
         creteEmptyLine(preface, 1);
 
-        preface.add(new Paragraph("Class type: " + ticket.getClassType(), TIME_ROMAN_SMALL));
+        preface.add(new Paragraph("Class type: " + ticket.getClassType().getName(), TIME_ROMAN_SMALL));
         creteEmptyLine(preface, 1);
 
         preface.add(new Paragraph("Gate: " + ticket.getReservation().getFlight().getGate(), TIME_ROMAN_SMALL));

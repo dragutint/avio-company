@@ -10,12 +10,12 @@
 <div class="container mt-3">
     <div class="card">
         <div class="card-header text-center">
-            <h3>${client.firstName}&nbsp${client.lastName}</h3>
+            <h3><i class="fas fa-user-astronaut"></i> ${client.firstName}&nbsp${client.lastName}</h3>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-4 offset-1">
-                    Passport num
+                    <i class="fas fa-id-card"></i> Passport num
                 </div>
                 <div class="col-6">
                     ${client.passportNum}
@@ -23,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-4 offset-1">
-                    Date of birth
+                    <i class="fas fa-calendar"></i> Date of birth
                 </div>
                 <div class="col-6">
                     <fmt:formatDate value="${client.dateOfBirth}" pattern="DD.MM.YYYY." />
@@ -31,7 +31,7 @@
             </div>
             <div class="row">
                 <div class="col-4 offset-1">
-                    Email
+                    <i class="fas fa-envelope"></i> Email
                 </div>
                 <div class="col-6">
                     ${client.email}
@@ -39,7 +39,7 @@
             </div>
             <div class="row">
                 <div class="col-4 offset-1">
-                    Contact
+                    <i class="fas fa-phone"></i> Contact
                 </div>
                 <div class="col-6">
                     ${client.contact}
@@ -47,7 +47,7 @@
             </div>
             <div class="row">
                 <div class="col-4 offset-1">
-                    Country of origin
+                    <i class="fas fa-globe-americas"></i> Country of origin
                 </div>
                 <div class="col-6">
                     ${client.country}
@@ -68,18 +68,32 @@
                             <tr>
                                 <th>Departure</th>
                                 <th>Arrival</th>
+                                <th>Flight date</th>
                                 <th>Price</th>
-                                <th>Date</th>
+                                <th>Reservation date</th>
                                 <th>Link</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach var="reservation" items="${reservations}">
                                 <tr>
-                                    <td>${reservation.flight.airportDepIata}</td>
-                                    <td>${reservation.flight.airportArrIata}</td>
+                                    <td>
+                                        <span class="badge badge-primary">
+                                            <h5>
+                                                ${reservation.flight.airportDepIata}
+                                            </h5>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-primary">
+                                            <h5>
+                                                ${reservation.flight.airportArrIata}
+                                            </h5>
+                                        </span>
+                                    </td>
+                                    <td><fmt:formatDate value="${reservation.flight.timeDep}" pattern="DD.MM.YYYY. HH:mm" /></td>
                                     <td>${reservation.price}</td>
-                                    <td>${reservation.dateCreated}</td>
+                                    <td><fmt:formatDate value="${reservation.dateCreated}" pattern="DD.MM.YYYY." /></td>
                                     <td><a href="reserve/preview/${reservation.id}"><button class="form-control btn btn-info">Preview</button></a></td>
                                 </tr>
                             </c:forEach>
@@ -95,7 +109,6 @@
         </c:otherwise>
     </c:choose>
     <%@ include file="../includes/footer.jsp" %>
-
 </div>
 </body>
 </html>

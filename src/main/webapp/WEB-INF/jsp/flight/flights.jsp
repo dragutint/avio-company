@@ -40,8 +40,8 @@
                     <td>${flight.airportArrIata}</td>
                     <td>${flight.gate}</td>
                     <td>${flight.durationInMin}</td>
-                    <td>${flight.timeDep}</td>
-                    <td>${flight.timeArr}</td>
+                    <td><fmt:formatDate value="${flight.timeDep}" pattern="DD.MM.YYYY. HH:mm" /></td>
+                    <td><fmt:formatDate value="${flight.timeArr}" pattern="DD.MM.YYYY. HH:mm" /></td>
                     <td>
                         <button class="btn btn-danger deleteFlight" data-flightid="${flight.id}"><i class="fa fa-trash"></i></button>
                     </td>

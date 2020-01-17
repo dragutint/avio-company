@@ -15,7 +15,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-2">
-                    <label for="airportFrom">Airport from</label>
+                    <label for="airportFrom"><i class="fa fa-plane-departure"></i> Airport from</label>
                 </div>
                 <div class="col-7">
                     <form:select path="airportDepIata" id="airportFrom" cssClass="form-control text-center" required="required"/>
@@ -29,7 +29,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-2">
-                    <label for="airportTo">Airport to</label>
+                    <label for="airportTo"><i class="fas fa-plane-arrival"></i> Airport to</label>
                 </div>
                 <div class="col-7">
                     <form:select path="airportArrIata" id="airportTo" cssClass="form-control text-center" required="required"/>
@@ -43,7 +43,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-2">
-                    <label for="durationInMin">Duration of flight</label>
+                    <label for="durationInMin"><i class="fa fa-clock"></i> Duration of flight</label>
                 </div>
                 <div class="col-10">
                     <form:input path="durationInMin" id="flightDuration" cssClass="form-control" placeholder="Enter estimated duration in minutes.." type="number" minlength="1" required="required"/>
@@ -54,7 +54,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-2">
-                    <label for="timeDep" class="mb-0">Department time</label>
+                    <label for="timeDep" class="mb-0"><i class="fa fa-calendar"></i> Department time</label>
                     <br>
                     <small class="mt-0 timezoneFrom"></small>
                 </div>
@@ -72,7 +72,7 @@
                     <button id="generateArrivalTime" class="form-control btn-info" type="button">Generate arrival</button>
                 </div>
                 <div class="col-2">
-                    <label for="timeArr" class="mb-0">Arrival time</label>
+                    <label for="timeArr" class="mb-0"><i class="fas fa-calendar"></i> Arrival time</label>
                     <br>
                     <small class="mt-0 timezoneTo"></small>
                 </div>
@@ -100,7 +100,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-2">
-                    <label for="pilot">Pilot</label>
+                    <label for="pilot"><i class="fas fa-user-circle"></i> Pilot</label>
                 </div>
                 <div class="col-10">
                     <form:select path="pilot" cssClass="form-control text-center">
@@ -115,7 +115,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-2">
-                    <label for="aeroplane">Aeroplane</label>
+                    <label for="aeroplane"><i class="fas fa-plane"></i> Aeroplane</label>
                 </div>
                 <div class="col-10">
                     <form:select path="aeroplane" cssClass="form-control text-center">
@@ -130,7 +130,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-2">
-                    <label for="gate">Gate</label>
+                    <label for="gate"><i class="fas fa-arrow-up"></i> Gate</label>
                 </div>
                 <div class="col-10">
                     <form:input path="gate" cssClass="form-control" placeholder="Enter gate.." minlength="2" required="required"/>
@@ -141,7 +141,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-2">
-                    <label for="priceEc">Economy price</label>
+                    <label for="priceEc"><i class="fas fa-coins"></i> Economy price</label>
                 </div>
                 <div class="col-10">
                     <form:input path="priceEc" cssClass="form-control" placeholder="Enter price for economy class.." required="required"/>
@@ -152,7 +152,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-2">
-                    <label for="priceBu">Business price</label>
+                    <label for="priceBu"><i class="fab fa-bitcoin"></i> Business price</label>
                 </div>
                 <div class="col-10">
                     <form:input path="priceBu" cssClass="form-control" placeholder="Enter price for business class.." required="required"/>
