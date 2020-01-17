@@ -1,7 +1,7 @@
 package com.avio.web.controller;
 
 import com.avio.domain.Ticket;
-import com.avio.bl.service.TicketPDFGenerator;
+import com.avio.bl.util.TicketPDFGenerator;
 import com.avio.bl.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

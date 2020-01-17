@@ -1,4 +1,4 @@
-package com.avio.bl.service;
+package com.avio.bl.util;
 
 import com.avio.domain.Ticket;
 import com.itextpdf.text.*;
