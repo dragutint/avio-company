@@ -73,4 +73,12 @@ public class FlightDao extends AbstractJDBCDao {
                         f.getId()
                 });
     }
+
+    public void unlockFlight(Integer flightId) {
+        jdbcTemplate.update(queries.getSQL("unlock.flight"), flightId);
+    }
+
+    public void lockFlight(Integer flightId, Integer lockId) {
+        jdbcTemplate.update(queries.getSQL("lock.flight"), lockId, flightId);
+    }
 }

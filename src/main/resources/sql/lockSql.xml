@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="select.not.ended.lock">
+        <![CDATA[
+            SELECT count(*)
+            FROM aviodb.flight_lock
+            WHERE id = ?
+                AND end_timestamp IS NULL
+        ]]>
+    </entry>
+    <entry key="end.lock">
+        <![CDATA[
+            UPDATE aviodb.flight_lock SET end_timestamp = SYSDATE() WHERE id = ?
+        ]]>
+    </entry>
+    <entry key="insert.lock">
+        <![CDATA[
+            INSERT INTO aviodb.flight_lock (client_id, start_timestamp)
+            VALUES (?, SYSDATE())
+        ]]>
+    </entry>
+</properties>

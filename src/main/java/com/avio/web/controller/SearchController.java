@@ -1,24 +1,20 @@
 package com.avio.web.controller;
 
-import com.avio.bl.service.FlightLookupService;
+import com.avio.bl.job.FlightLookupJob;
 import com.avio.domain.Flight;
 import com.avio.domain.helper.SearchFilterForm;
 import com.avio.bl.exception.EmptyResourcesException;
 import com.avio.bl.service.CurrencyService;
 import com.avio.bl.service.FlightService;
-import com.avio.domain.helper.SocketResponseDTO;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.util.HtmlUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -33,7 +29,7 @@ public class SearchController {
     @Autowired
     private CurrencyService currencyService;
     @Autowired
-    private FlightLookupService flightLookupService;
+    private FlightLookupJob flightLookupJob;
 
     @GetMapping("/search")
     public String search(Model model) {
@@ -48,7 +44,7 @@ public class SearchController {
         log.debug("Doing search for criteria: {}", searchFilterForm);
 
         try {
-            flightLookupService.checkFlights();
+            flightLookupJob.checkFlights();
 
             TreeMap<Date, List<Flight>> flights = flightService.search(searchFilterForm);
             model.addAttribute("flights", flights);

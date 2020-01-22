@@ -1,4 +1,4 @@
-package com.avio.bl.service;
+package com.avio.bl.job;
 
 import com.avio.bl.dao.FlightDao;
 import com.avio.bl.dao.FlightLookupDao;
@@ -19,7 +19,7 @@ import java.util.concurrent.CompletableFuture;
 @Service
 @Log4j2
 @EnableAsync
-public class FlightLookupService extends AbstractJDBCDao {
+public class FlightLookupJob extends AbstractJDBCDao {
     @Autowired
     private FlightLookupDao flightLookupDao;
     @Autowired

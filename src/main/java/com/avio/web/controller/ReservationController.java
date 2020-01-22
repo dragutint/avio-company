@@ -1,5 +1,6 @@
 package com.avio.web.controller;
 
+import com.avio.bl.job.FlightLockJob;
 import com.avio.domain.Flight;
 import com.avio.domain.Reservation;
 import com.avio.domain.Ticket;
@@ -32,11 +33,19 @@ public class ReservationController {
     private ReservationService reservationService;
     @Autowired
     private TicketService ticketService;
+    @Autowired
+    private FlightLockJob flightLockJob;
 
 
     @GetMapping("/{flightId}")
     @PreAuthorize("hasAnyAuthority('client')")
-    public String reserve(Model model, @PathVariable Integer flightId){
+    public String reserve(Model model, @PathVariable Integer flightId) throws InterruptedException {
+        if(flightService.locked(flightId)){
+            log.error("Error: flight is locked");
+            model.addAttribute("exception", new Exception("Flight is locked"));
+            return "error";
+        }
+
         String username = LoginController.getPrincipal();
 
         Reservation reservation = new Reservation();
@@ -50,6 +59,9 @@ public class ReservationController {
         model.addAttribute("flight", f);
         model.addAttribute("reservation", reservation);
 
+        Integer lockId = flightService.lockFlight(flightId, c.getId());
+        flightLockJob.unlockFlightAfterDelay(flightId, lockId);
+
         return "reserve/reserve";
     }
 
@@ -57,6 +69,7 @@ public class ReservationController {
     @PreAuthorize("hasAnyAuthority('client')")
     public String reservePassengersInfo(Model model, @ModelAttribute Reservation reservation){
         reservationService.checkReservation(reservation);
+        flightService.unlockFlight(reservation.getFlight().getId());
         reservationService.reserve(reservation);
 
         model.addAttribute("reservation", reservation);

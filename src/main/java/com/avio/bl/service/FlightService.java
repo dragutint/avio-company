@@ -1,10 +1,12 @@
 package com.avio.bl.service;
 
 import com.avio.bl.dao.FlightDao;
+import com.avio.bl.dao.LockingDao;
 import com.avio.domain.Flight;
 import com.avio.domain.helper.SearchFilterForm;
 import com.avio.bl.exception.EmptyResourcesException;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,8 @@ public class FlightService {
     private FlightDao flightDao;
     @Autowired
     private CurrencyService currencyService;
+    @Autowired
+    private LockingDao lockingDao;
 
 
     public List<Flight> find() {
@@ -131,5 +135,27 @@ public class FlightService {
 
     public String delete(Integer flightId) {
         return flightDao.delete(flightId);
+    }
+
+    public Boolean locked(Integer flightId) {
+        Integer lockId = lockingDao.getLockByFlightId(flightId);
+
+        return lockId != null;
+    }
+
+    public void unlockFlight(Integer flightId) {
+        Integer lockId = lockingDao.getLockByFlightId(flightId);
+        if(lockId != null) {
+            lockingDao.endLock(lockId);
+            flightDao.unlockFlight(flightId);
+        }
+    }
+
+    public Integer lockFlight(Integer flightId, Integer clientId) {
+        Integer lockId = lockingDao.insert(clientId);
+
+        flightDao.lockFlight(flightId, lockId);
+
+        return lockId;
     }
 }

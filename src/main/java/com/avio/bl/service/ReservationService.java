@@ -1,6 +1,7 @@
 package com.avio.bl.service;
 
 import com.avio.bl.dao.FlightDao;
+import com.avio.bl.dao.LockingDao;
 import com.avio.bl.dao.ReservationDao;
 import com.avio.bl.exception.EmptyResourcesException;
 import com.avio.domain.Flight;

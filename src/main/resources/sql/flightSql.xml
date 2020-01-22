@@ -74,4 +74,27 @@
             WHERE id = ?
         ]]>
     </entry>
+
+    <entry key="unlock.flight">
+        <![CDATA[
+            UPDATE aviodb.flight SET
+                lock_id = null
+            WHERE id = ?
+        ]]>
+    </entry>
+
+    <entry key="lock.flight">
+        <![CDATA[
+            UPDATE aviodb.flight SET
+                lock_id = ?
+            WHERE id = ?
+        ]]>
+    </entry>
+
+    <entry key="check.whether.flight.is.locked">
+        <![CDATA[
+            SELECT lock_id FROM aviodb.flight f WHERE f.id = ?
+        ]]>
+    </entry>
+
 </properties>
