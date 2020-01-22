@@ -123,13 +123,13 @@
         </c:when>
         <c:otherwise>
             <sec:authorize access="hasAuthority('admin')">
-                <div class="text-center mt-4">
-                    <h4>The client never flew with us</h4>
+                <div class="alert alert-warning mt-3" role="alert">
+                    <h4 class="alert-heading text-center">The client never flew with us</h4>
                 </div>
             </sec:authorize>
             <sec:authorize access="hasAuthority('client')">
-                <div class="text-center mt-4">
-                    <h4>You have never flown with us</h4>
+                <div class="alert alert-warning mt-3" role="alert">
+                    <h4 class="alert-heading text-center">You have never flown with us</h4>
                 </div>
             </sec:authorize>
         </c:otherwise>

@@ -65,7 +65,14 @@
                                     <td>${reservation.passengersNum}</td>
                                     <td><fmt:formatDate value="${reservation.dateCreated}" pattern="DD.MM.YYYY."/></td>
                                     <td>
-                                        <button class="btn btn-info showReservation" data-reservationid="${reservation.id}"><i class="fa fa-arrow-right"></i></button>
+                                        <c:choose>
+                                            <c:when test="${reservation.finished}">
+                                                <button class="btn btn-info showReservation" data-reservationid="${reservation.id}"><i class="fa fa-arrow-right"></i></button>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <button class="btn btn-danger showReservation" data-reservationid="${reservation.id}"><i class="fa fa-arrow-right"></i></button>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </td>
                                 </tr>
                             </c:forEach>

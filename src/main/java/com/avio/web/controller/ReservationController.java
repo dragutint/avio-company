@@ -12,7 +12,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -54,10 +56,9 @@ public class ReservationController {
     @PostMapping("/passengers-info")
     @PreAuthorize("hasAnyAuthority('client')")
     public String reservePassengersInfo(Model model, @ModelAttribute Reservation reservation){
-        if(!(reservation.getPassengersNum() != null && reservation.getPassengersNum() > 0))
-            throw new EmptyResourcesException("You have not entered passengers num or you entered negative number");
-
+        reservationService.checkReservation(reservation);
         reservationService.reserve(reservation);
+
         model.addAttribute("reservation", reservation);
         model.addAttribute("classtypes", classTypeService.find());
 
@@ -84,6 +85,17 @@ public class ReservationController {
         model.addAttribute("tickets", tickets);
 
         return "reserve/preview";
+    }
+
+    @ExceptionHandler(EmptyResourcesException.class)
+    public ModelAndView handleError(HttpServletRequest req, EmptyResourcesException ex) {
+        log.error("Error: {}", ex.getMessage());
+
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("exception", ex);
+        mav.addObject("url", req.getRequestURL());
+        mav.setViewName("error");
+        return mav;
     }
 
     @ModelAttribute("reservation")

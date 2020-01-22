@@ -35,7 +35,14 @@
                 <sec:authorize access="hasAuthority('admin')">
                 <div class="card mt-3">
                     <div class="card-header">
-                        <h5>Client info</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <h5>Client info</h5>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-info clientProfile" data-clientid="${reservation.client.id}"><i class="fa fa-arrow-left"></i></button>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -124,5 +131,6 @@
     </div>
     <%@ include file="../includes/footer.jsp" %>
 </div>
+<script src="<c:url value="/resources/js/client/client.js"/>"></script>
 </body>
 </html>

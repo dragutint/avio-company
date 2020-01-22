@@ -2,6 +2,7 @@ package com.avio.bl.service;
 
 import com.avio.bl.dao.FlightDao;
 import com.avio.bl.dao.ReservationDao;
+import com.avio.bl.exception.EmptyResourcesException;
 import com.avio.domain.Flight;
 import com.avio.domain.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,17 @@ public class ReservationService {
 
     public List<Reservation> findByFlightId(Integer flightId) {
         return reservationDao.findByFlightId(flightId);
+    }
+
+    public void checkReservation(Reservation reservation) throws EmptyResourcesException {
+        if(!(reservation.getPassengersNum() != null && reservation.getPassengersNum() > 0))
+            throw new EmptyResourcesException("You have not entered passengers num or you entered negative number");
+
+        Flight f = flightDao.getById(reservation.getFlight().getId());
+
+        if(f.getFreeSeats() < reservation.getPassengersNum()){
+            String message = "Seats are not available, free seats: " + f.getFreeSeats() + ", you entered: " + reservation.getPassengersNum();
+            throw new EmptyResourcesException(message);
+        }
     }
 }
