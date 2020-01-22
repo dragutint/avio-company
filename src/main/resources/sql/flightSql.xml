@@ -33,8 +33,7 @@
                 duration,
                 time_dep,
                 time_arr,
-                free_seats_bu,
-                free_seats_ec,
+                free_seats,
                 price_bu,
                 price_ec,
                 date_created,
@@ -52,10 +51,27 @@
                 ?,
                 ?,
                 ?,
-                ?,
                 SYSDATE(),
                 SYSDATE()
             )
+        ]]>
+    </entry>
+    <entry key="update.flight">
+        <![CDATA[
+            UPDATE aviodb.flight SET
+                pilot_id = ?,
+                aeroplane_id = ?,
+                airport_dep_iata = ?,
+                airport_arr_iata = ?,
+                gate = ?,
+                duration = ?,
+                time_dep = ?,
+                time_arr = ?,
+                free_seats = ?,
+                price_bu = ?,
+                price_ec = ?,
+                date_updated = SYSDATE()
+            WHERE id = ?
         ]]>
     </entry>
 </properties>

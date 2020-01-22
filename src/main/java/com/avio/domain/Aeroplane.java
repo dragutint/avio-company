@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 public class Aeroplane {
     private Integer id;
     private String name;
-    private Integer capacityEc;
-    private Integer capacityBu;
+    private Integer capacity;
 }

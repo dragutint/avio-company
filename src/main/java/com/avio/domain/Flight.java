@@ -22,8 +22,7 @@ public class Flight {
     private Date timeDep;
     @DateTimeFormat(pattern = "YYYY-MM-DD HH:mm:ss")
     private Date timeArr;
-    private Integer freeSeatsBu;
-    private Integer freeSeatsEc;
+    private Integer freeSeats;
     private Date dateCreated;
     private Date dateUpdated;
     private Double priceEc;

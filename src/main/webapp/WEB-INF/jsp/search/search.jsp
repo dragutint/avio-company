@@ -95,15 +95,14 @@
                             </c:forEach>
                         </ul>
                         <div class="tab-content" id="myTabContent">
+                            <div class="row mt-2 mb-1">
+                                <div class="col-2">DEPARTURE</div>
+                                <div class="col-2">ARRIVAL</div>
+                                <div class="col-2">EC price</div>
+                                <div class="col-2">BU price</div>
+                                <div class="col-2">Free seats</div>
+                            </div>
                             <c:forEach items="${flights}" var="flightMapItem">
-                                <div class="row mt-2 mb-1">
-                                    <div class="col-2">DEPARTURE</div>
-                                    <div class="col-2">ARRIVAL</div>
-                                    <div class="col-2">EC price</div>
-                                    <div class="col-2">BU price</div>
-                                    <div class="col-2">EC free</div>
-                                    <div class="col-2">BU free</div>
-                                </div>
                                 <div class="tab-pane fade show" id="flight-${flightMapItem.key.time}" role="tabpanel" aria-labelledby="flight-tab-${flightMapItem.key.time}">
                                     <c:forEach items="${flightMapItem.value}" var="flight">
                                         <div class="row mb-2 border-light">
@@ -135,17 +134,10 @@
                                                     </h5>
                                                 </span>
                                             </div>
-                                            <div class="col-1">
-                                                <span id="freeSeatsEc-span-${flight.id}" class="badge badge-success">
-                                                    <h5 id="freeSeatsEc-${flight.id}">
-                                                        ${flight.freeSeatsEc}
-                                                    </h5>
-                                                </span>
-                                            </div>
-                                            <div class="col-1">
-                                                <span id="freeSeatsBu-span-${flight.id}" class="badge badge-success">
-                                                    <h5 id="freeSeatsBu-${flight.id}">
-                                                        ${flight.freeSeatsBu}
+                                            <div class="col-2">
+                                                <span id="freeSeats-span-${flight.id}" class="badge badge-success">
+                                                    <h5 id="freeSeats-${flight.id}">
+                                                        ${flight.freeSeats}
                                                     </h5>
                                                 </span>
                                             </div>

@@ -57,7 +57,7 @@ public class ReservationController {
         if(!(reservation.getPassengersNum() != null && reservation.getPassengersNum() > 0))
             throw new EmptyResourcesException("You have not entered passengers num or you entered negative number");
 
-        reservationService.save(reservation);
+        reservationService.reserve(reservation);
         model.addAttribute("reservation", reservation);
         model.addAttribute("classtypes", classTypeService.find());
 

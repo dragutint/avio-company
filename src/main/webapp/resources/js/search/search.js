@@ -61,7 +61,6 @@ $('.btnReserve').click(function () {
     window.location.href = path + "/reserve/" + flightid;
 });
 
-
 var stompClient = null;
 
 function setConnected(connected) {
@@ -90,23 +89,12 @@ function connect() {
 
 function updatePrice(json) {
     var flightId = json['flightId'];
-    var freeSeatsEc = json['freeSeatsEc'];
-    var freeSeatsBu = json['freeSeatsBu']
+    var freeSeats = json['freeSeats'];
 
-    $('#freeSeatsEc-' + flightId).text(freeSeatsEc);
-    $('#freeSeatsBu-' + flightId).text(freeSeatsBu);
+    $('#freeSeats-' + flightId).text(freeSeats);
 
-    if(freeSeatsBu == 0 || freeSeatsBu == null){
-        $('#freeSeatsBu-span-' + flightId).removeClass("badge-success");
-        $('#freeSeatsBu-span-' + flightId).addClass("badge-danger");
-    }
-
-    if(freeSeatsEc == 0 || freeSeatsEc == null){
-        $('#freeSeatsEc-span-' + flightId).removeClass("badge-success");
-        $('#freeSeatsEc-span-' + flightId).addClass("badge-danger");
-    }
-
-    if((freeSeatsEc == 0 || freeSeatsEc == null) && (freeSeatsBu == 0 || freeSeatsBu == null)){
+    if(freeSeats == 0 || freeSeats == null){
+        $('#freeSeats-span-' + flightId).addClass("badge-danger");
         $('#btnReserve-' + flightId).attr("disabled", true);
     }
 }

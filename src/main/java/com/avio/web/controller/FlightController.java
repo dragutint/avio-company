@@ -12,6 +12,7 @@ import com.avio.bl.service.PilotService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -64,6 +65,12 @@ public class FlightController {
 
         flightService.addNewFlight(flight);
         return "redirect:/search";
+    }
+
+    @GetMapping("/flight/{flightId}/reservations")
+    public String reservationsByFlight(Model model, @PathVariable Integer flightId){
+        // TODO implement
+        return "";
     }
 
     @ResponseBody

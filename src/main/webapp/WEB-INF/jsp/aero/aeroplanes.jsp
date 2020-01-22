@@ -23,8 +23,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Economy capacity</th>
-                <th>Business capacity</th>
+                <th>Capacity</th>
             </tr>
         </thead>
         <tbody>
@@ -32,8 +31,7 @@
                 <tr>
                     <td class="table-cell">${aeroplane.id}</td>
                     <td class="table-cell">${aeroplane.name}</td>
-                    <td class="table-cell">${aeroplane.capacityEc}</td>
-                    <td class="table-cell">${aeroplane.capacityBu}</td>
+                    <td class="table-cell">${aeroplane.capacity}</td>
                 </tr>
             </c:forEach>
         </tbody>

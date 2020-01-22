@@ -36,8 +36,7 @@ public class FlightDao extends AbstractJDBCDao {
                     f.getDurationInMin(),
                     f.getTimeDep(),
                     f.getTimeArr(),
-                    f.getAeroplane().getCapacityBu(),
-                    f.getAeroplane().getCapacityEc(),
+                    f.getAeroplane().getCapacity(),
                     f.getPriceBu(),
                     f.getPriceEc()
             });
@@ -54,6 +53,23 @@ public class FlightDao extends AbstractJDBCDao {
         } catch (DataAccessException e) {
             return e.getMessage();
         }
+    }
 
+    public void update(Flight f) {
+        jdbcTemplate.update(queries.getSQL("update.flight"),
+                new Object[]{
+                        f.getPilot().getId(),
+                        f.getAeroplane().getId(),
+                        f.getAirportDepIata(),
+                        f.getAirportArrIata(),
+                        f.getGate(),
+                        f.getDurationInMin(),
+                        f.getTimeDep(),
+                        f.getTimeArr(),
+                        f.getFreeSeats(),
+                        f.getPriceBu(),
+                        f.getPriceEc(),
+                        f.getId()
+                });
     }
 }

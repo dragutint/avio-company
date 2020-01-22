@@ -120,7 +120,7 @@
                 <div class="col-10">
                     <form:select path="aeroplane" cssClass="form-control text-center">
                         <c:forEach var="aeroplane" items="${aeroplanes}">
-                            <form:option value="${aeroplane.id}"><c:out value="${aeroplane.name}, capacity EC: ${aeroplane.capacityEc}, capacity BU: ${aeroplane.capacityBu}" /></form:option>
+                            <form:option value="${aeroplane.id}"><c:out value="${aeroplane.name}, capacity: ${aeroplane.capacity}" /></form:option>
                         </c:forEach>
                     </form:select>
                 </div>

@@ -9,6 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SocketResponseDTO {
     private Integer flightId;
-    private Integer freeSeatsBu;
-    private Integer freeSeatsEc;
+    private Integer freeSeats;
 }

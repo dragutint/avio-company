@@ -13,8 +13,7 @@ public class AeroplaneRowMapper extends AbstractMapper {
         Aeroplane a = new Aeroplane();
         a.setId(getInteger("id"));
         a.setName(getString("name"));
-        a.setCapacityBu(getInteger("capacity_bu"));
-        a.setCapacityEc(getInteger("capacity_ec"));
+        a.setCapacity(getInteger("capacity"));
         return a;
     }
 }

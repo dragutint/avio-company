@@ -31,8 +31,7 @@ public class FlightRowMapper extends AbstractMapper {
         f.setDateUpdated(getDate("date_updated"));
         f.setDurationInMin(getInteger("duration"));
         f.setGate(getString("gate"));
-        f.setFreeSeatsBu(getInteger("free_seats_bu"));
-        f.setFreeSeatsEc(getInteger("free_seats_ec"));
+        f.setFreeSeats(getInteger("free_seats"));
         f.setPriceBu(getDouble("price_bu"));
         f.setPriceEc(getDouble("price_ec"));
         f.setTimeDep(getDate("time_dep"));

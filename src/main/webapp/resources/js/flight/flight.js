@@ -2,7 +2,6 @@ var path = window.location.origin + window.location.pathname.substring(0, window
 
 $('.deleteFlight').click(function () {
     var flightid = $(this).data('flightid');
-    console.log(flightid);
 
     $.ajax({
         url: path + '/flight/delete/' + flightid,
@@ -15,6 +14,12 @@ $('.deleteFlight').click(function () {
             window.location.reload(false);
         }
     })
+});
+
+$('.listReservations').click(function () {
+    var flightid = $(this).data('flightid');
+
+    window.location.href = path + '/flight/' + flightid + '/reservations';
 });
 
 

@@ -94,7 +94,7 @@ public class FlightService {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("SELECT * FROM aviodb.flight f ");
 
-        stringBuilder.append("WHERE f.time_dep >= SYSDATE() AND (f.free_seats_bu > 0 OR f.free_seats_ec > 0) AND ");
+        stringBuilder.append("WHERE f.time_dep >= SYSDATE() AND f.free_seats > 0 AND ");
 
         if(searchFilterForm.getFromIata() == null){
             throw new EmptyResourcesException("You have not entered departure airport");

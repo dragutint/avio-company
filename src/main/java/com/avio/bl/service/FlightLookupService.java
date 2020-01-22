@@ -59,8 +59,7 @@ public class FlightLookupService extends AbstractJDBCDao {
         Flight f = flightDao.getById(fc.getFlightId());
 
         socketResponseDTO.setFlightId(fc.getFlightId());
-        socketResponseDTO.setFreeSeatsBu(f.getFreeSeatsBu());
-        socketResponseDTO.setFreeSeatsEc(f.getFreeSeatsEc());
+        socketResponseDTO.setFreeSeats(f.getFreeSeats());
 
         this.simpMessagingTemplate.convertAndSend("/topic/flight-change", socketResponseDTO);
     }

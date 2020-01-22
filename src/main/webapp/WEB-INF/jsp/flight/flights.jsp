@@ -44,6 +44,7 @@
                     <td><fmt:formatDate value="${flight.timeArr}" pattern="DD.MM.YYYY. HH:mm" /></td>
                     <td>
                         <button class="btn btn-danger deleteFlight" data-flightid="${flight.id}"><i class="fa fa-trash"></i></button>
+                        <button class="btn btn-info listReservations" data-flightid="${flight.id}"><i class="fa fa-list"></i></button>
                     </td>
                 </tr>
             </c:forEach>
