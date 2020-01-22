@@ -19,3 +19,6 @@
 
 <%--font awesome--%>
 <link rel="stylesheet" href="<c:url value="/webjars/font-awesome/5.1.0/css/all.css"/>" />
+
+<script src="<c:url value="/webjars/sockjs-client/1.0.2/sockjs.min.js"/>"></script>
+<script src="<c:url value="/webjars/stomp-websocket/2.3.3/stomp.min.js"/>"></script>

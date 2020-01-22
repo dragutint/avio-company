@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="select.new.flight.changes">
+        <![CDATA[
+            SELECT * FROM aviodb.flight_change fc WHERE fc.date_time_change > ? AND fc.processed = 0
+        ]]>
+    </entry>
+
+    <entry key="process.flight.change">
+        <![CDATA[
+            UPDATE aviodb.flight_change SET processed = 1 WHERE id = ?
+        ]]>
+    </entry>
+</properties>

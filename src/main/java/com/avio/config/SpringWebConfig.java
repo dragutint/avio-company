@@ -12,6 +12,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.ResourcePatternUtils;
 import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -20,12 +22,14 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.util.concurrent.Executor;
 
 @Log4j2
 @PropertySource("classpath:avio.app.properties")
 @EnableWebMvc
 @Configuration
 @ComponentScan({"com.avio"})
+@EnableAsync
 public class SpringWebConfig implements WebMvcConfigurer {
 
     @Autowired
@@ -64,5 +68,16 @@ public class SpringWebConfig implements WebMvcConfigurer {
         final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
         dsLookup.setResourceRef(true);
         return dsLookup.getDataSource(appProps.getDatasourceJndiName());
+    }
+
+    @Bean
+    public Executor taskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(2);
+        executor.setMaxPoolSize(2);
+        executor.setQueueCapacity(500);
+        executor.setThreadNamePrefix("FlightLookup-");
+        executor.initialize();
+        return executor;
     }
 }
