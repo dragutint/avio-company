@@ -18,6 +18,8 @@ public class ReservationService {
     private ReservationDao reservationDao;
     @Autowired
     private FlightDao flightDao;
+    @Autowired
+    private LockingDao lockingDao;
 
     public List<Reservation> find() {
         return reservationDao.find();
@@ -57,6 +59,15 @@ public class ReservationService {
         if(f.getFreeSeats() < reservation.getPassengersNum()){
             String message = "Seats are not available, free seats: " + f.getFreeSeats() + ", you entered: " + reservation.getPassengersNum();
             throw new EmptyResourcesException(message);
+        }
+
+        Integer lockId = lockingDao.getLockByFlightId(reservation.getFlight().getId());
+
+        if(lockId == null)
+            throw new EmptyResourcesException("Your reservation time has expired. Try again!");
+
+        if(!lockingDao.isClientsLock(lockId, reservation.getClient().getId())){
+            throw new EmptyResourcesException("Someone else is reserving right now, please try again in a minute");
         }
     }
 }

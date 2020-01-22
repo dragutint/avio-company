@@ -9,6 +9,13 @@
                 AND end_timestamp IS NULL
         ]]>
     </entry>
+    <entry key="select.client.by.lock">
+        <![CDATA[
+            SELECT client_id
+            FROM aviodb.flight_lock
+            WHERE id = ?
+        ]]>
+    </entry>
     <entry key="end.lock">
         <![CDATA[
             UPDATE aviodb.flight_lock SET end_timestamp = SYSDATE() WHERE id = ?

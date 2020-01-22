@@ -73,10 +73,10 @@ public class SpringWebConfig implements WebMvcConfigurer {
     @Bean
     public Executor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(2);
-        executor.setMaxPoolSize(2);
+        executor.setCorePoolSize(20);
+        executor.setMaxPoolSize(20);
         executor.setQueueCapacity(500);
-        executor.setThreadNamePrefix("FlightLookup-");
+        executor.setThreadNamePrefix("LalicExecutor-");
         executor.initialize();
         return executor;
     }
