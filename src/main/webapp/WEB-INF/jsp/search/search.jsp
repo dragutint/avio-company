@@ -9,7 +9,7 @@
 <%@ include file="../includes/header.jsp" %>
 <div class="container mt-3">
     <div class="row">
-        <div class="col-4">
+        <div class="col-lg-4">
             <div class="card">
                 <form:form method="post" action="searchFlights" modelAttribute="searchFilterForm">
                     <div class="card-header">
@@ -65,17 +65,17 @@
                 </form:form>
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-lg-8 my-4">
             <c:if test="${empty error && empty flights}" >
                 <img src="<c:url value="/resources/img/love.jpeg" />" alt="" height="50%" width="100%">
             </c:if>
 
             <c:if test="${not empty error}">
                 <div class="alert alert-warning" role="alert">
-                <h4 class="alert-heading">We're sorry</h4>
-                <p>The flights you're searching for are not available, try a different date or some of our partner companies</p>
-                <hr>
-                <p><a href="https://www.wizzair.com">Wizz Air</a></p>
+                    <h4 class="alert-heading">We're sorry</h4>
+                    <p>The flights you're searching for are not available, try a different date or some of our partner companies</p>
+                    <hr>
+                    <p><a href="https://www.wizzair.com">Wizz Air</a></p>
                 </div>
             </c:if>
 

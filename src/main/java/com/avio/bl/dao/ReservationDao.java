@@ -47,4 +47,8 @@ public class ReservationDao extends AbstractJDBCDao {
     public void updatePrice(Reservation r) {
         jdbcTemplate.update(queries.getSQL("update.price"), new Object[]{r.getPrice(), r.getId()});
     }
+
+    public List<Reservation> findByFlightId(Integer flightId) {
+        return jdbcTemplate.query(queries.getSQL("select.reservations.by.flight"), reservationRowMapper, flightId);
+    }
 }

@@ -7,6 +7,13 @@
             SELECT * FROM aviodb.reservation;
         ]]>
     </entry>
+
+    <entry key="select.reservations.by.flight">
+        <![CDATA[
+            SELECT * FROM aviodb.reservation r WHERE r.flight_id = ?
+        ]]>
+    </entry>
+
     <entry key="select.reservation.by.id">
         <![CDATA[
             SELECT * FROM aviodb.reservation r WHERE r.id = ?;
@@ -19,7 +26,7 @@
             ON r.client_id = c.id
             JOIN aviodb.user u
             ON c.user_id = u.id
-            WHERE u.username = ? AND r.finished != 0
+            WHERE u.username = ?
         ]]>
     </entry>
     <entry key="insert.reservation">

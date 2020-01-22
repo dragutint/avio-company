@@ -26,6 +26,8 @@
 					<li class="nav-item"><a class="nav-link"
 						href="<c:url value="/flights"/>"><i class="fas fa-plane"></i> Flights</a></li>
 					<li class="nav-item"><a class="nav-link"
+						href="<c:url value="/clients"/>"><i class="fas fa-users"></i> Clients</a></li>
+					<li class="nav-item"><a class="nav-link"
 						href="<c:url value="/new-flight"/>"><i class="fas fa-plus"></i> New Flight</a></li>
 				</sec:authorize>
 

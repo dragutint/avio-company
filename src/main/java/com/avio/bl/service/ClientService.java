@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClientService {
 
@@ -28,5 +30,9 @@ public class ClientService {
         c.getUser().setPassword(passwordEncoder.encode(c.getUser().getPassword()));
         userDao.insert(c.getUser());
         clientDao.insert(c);
+    }
+
+    public List<Client> findAll() {
+        return clientDao.find();
     }
 }

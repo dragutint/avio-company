@@ -41,4 +41,8 @@ public class ReservationService {
     public void updatePrice(Reservation r) {
         reservationDao.updatePrice(r);
     }
+
+    public List<Reservation> findByFlightId(Integer flightId) {
+        return reservationDao.findByFlightId(flightId);
+    }
 }

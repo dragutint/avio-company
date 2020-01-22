@@ -52,12 +52,23 @@ public class ReservationController {
     }
 
     @PostMapping("/passengers-info")
-    @PreAuthorize("hasAnyAuthority('admin', 'client')")
+    @PreAuthorize("hasAnyAuthority('client')")
     public String reservePassengersInfo(Model model, @ModelAttribute Reservation reservation){
         if(!(reservation.getPassengersNum() != null && reservation.getPassengersNum() > 0))
             throw new EmptyResourcesException("You have not entered passengers num or you entered negative number");
 
         reservationService.reserve(reservation);
+        model.addAttribute("reservation", reservation);
+        model.addAttribute("classtypes", classTypeService.find());
+
+        return "reserve/passengers-info";
+    }
+
+    @GetMapping("/passengers-info/{reservationId}")
+    @PreAuthorize("hasAnyAuthority('client')")
+    public String reservePassengersInfoContinue(Model model, @PathVariable Integer reservationId){
+        Reservation reservation = reservationService.getById(reservationId);
+
         model.addAttribute("reservation", reservation);
         model.addAttribute("classtypes", classTypeService.find());
 

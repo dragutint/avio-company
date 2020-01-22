@@ -60,7 +60,12 @@
         <c:when test="${reservations.size() != 0}">
             <div class="card">
                 <div class="card-header text-center">
-                    <h4>Your flights</h4>
+                    <sec:authorize access="hasAuthority('admin')">
+                        <h4>Clients flights</h4>
+                    </sec:authorize>
+                    <sec:authorize access="hasAuthority('client')">
+                        <h4>Your flights</h4>
+                    </sec:authorize>
                 </div>
                 <div class="card-body">
                     <table class="table">
@@ -94,7 +99,21 @@
                                     <td><fmt:formatDate value="${reservation.flight.timeDep}" pattern="DD.MM.YYYY. HH:mm" /></td>
                                     <td>${reservation.price}</td>
                                     <td><fmt:formatDate value="${reservation.dateCreated}" pattern="DD.MM.YYYY." /></td>
-                                    <td><a href="reserve/preview/${reservation.id}"><button class="form-control btn btn-info">Preview</button></a></td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${reservation.finished}">
+                                                <a href="<c:url value="/reserve/preview/${reservation.id}"/>"><button class="form-control btn btn-info">Preview</button></a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <sec:authorize access="hasAuthority('client')">
+                                                    <a href="<c:url value="/reserve/preview/${reservation.id}"/>"><button class="form-control btn btn-danger">Continue</button></a>
+                                                </sec:authorize>
+                                                <sec:authorize access="hasAuthority('admin')">
+                                                    <a href="<c:url value="/reserve/preview/${reservation.id}"/>"><button class="form-control btn btn-danger">Preview</button></a>
+                                                </sec:authorize>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </tbody>
@@ -103,9 +122,16 @@
             </div>
         </c:when>
         <c:otherwise>
-            <div class="text-center mt-4">
-                <h4>You dont have any flights</h4>
-            </div>
+            <sec:authorize access="hasAuthority('admin')">
+                <div class="text-center mt-4">
+                    <h4>The client never flew with us</h4>
+                </div>
+            </sec:authorize>
+            <sec:authorize access="hasAuthority('client')">
+                <div class="text-center mt-4">
+                    <h4>You have never flown with us</h4>
+                </div>
+            </sec:authorize>
         </c:otherwise>
     </c:choose>
     <%@ include file="../includes/footer.jsp" %>

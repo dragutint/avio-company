@@ -3,6 +3,7 @@ package com.avio.bl.dao;
 import com.avio.bl.dao.rowmapper.FlightRowMapper;
 import com.avio.bl.dao.util.AbstractJDBCDao;
 import com.avio.domain.Flight;
+import com.avio.domain.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.dao.DataAccessException;

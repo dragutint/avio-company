@@ -27,8 +27,8 @@ public class ReservationRowMapper extends AbstractMapper {
         r.setFlight(flightDao.getById(getInteger("flight_id")));
         r.setDateCreated(getDate("date_created"));
         r.setPassengersNum(getInteger("passengers_num"));
-        r.setPayed(getBoolean("payed"));
         r.setPrice(getDouble("price"));
+        r.setFinished(getInteger("finished") == 0 ? false : true);
         return r;
     }
 }

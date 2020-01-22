@@ -1,5 +1,6 @@
 package com.avio.web.controller;
 
+import com.avio.bl.service.ReservationService;
 import com.avio.web.binders.AeroplaneBinder;
 import com.avio.web.binders.PilotBinder;
 import com.avio.domain.Aeroplane;
@@ -28,12 +29,16 @@ public class FlightController {
     private PilotBinder pilotBinder;
     @Autowired
     private AeroplaneBinder aeroplaneBinder;
+
+    @Autowired
+    private ReservationService reservationService;
     @Autowired
     private PilotService pilotService;
     @Autowired
     private AeroplaneService aeroplaneService;
     @Autowired
     private FlightService flightService;
+
 
     @RequestMapping("/flights")
     public String flights(ModelMap model){
@@ -69,8 +74,10 @@ public class FlightController {
 
     @GetMapping("/flight/{flightId}/reservations")
     public String reservationsByFlight(Model model, @PathVariable Integer flightId){
-        // TODO implement
-        return "";
+        model.addAttribute("flight", flightService.getById(flightId));
+        model.addAttribute("reservations", reservationService.findByFlightId(flightId));
+
+        return "flight/reservations";
     }
 
     @ResponseBody

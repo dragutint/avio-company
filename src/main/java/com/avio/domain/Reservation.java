@@ -14,7 +14,7 @@ public class Reservation {
     private Flight flight;
     private Client client;
     private Integer passengersNum;
-    private Boolean payed;
     private Double price;
     private Date dateCreated;
+    private Boolean finished;
 }
