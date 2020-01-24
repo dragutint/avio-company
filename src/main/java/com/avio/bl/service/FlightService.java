@@ -137,10 +137,16 @@ public class FlightService {
         return flightDao.delete(flightId);
     }
 
-    public Boolean locked(Integer flightId) {
+    public Boolean locked(Integer flightId, Integer clientId) {
         Integer lockId = lockingDao.getLockByFlightId(flightId);
 
-        return lockId != null;
+        if(lockId != null){
+            Integer clientIdFromDb = lockingDao.getClientIdByLockId(lockId);
+            return clientId != clientIdFromDb;
+        } else {
+            return lockId != null;
+        }
+
     }
 
     public void unlockFlight(Integer flightId) {

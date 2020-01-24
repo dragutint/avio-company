@@ -96,5 +96,13 @@
             SELECT lock_id FROM aviodb.flight f WHERE f.id = ?
         ]]>
     </entry>
+    <entry key="check.whether.flight.is.locked.client">
+        <![CDATA[
+            SELECT f.lock_id FROM aviodb.flight f
+            JOIN aviodb.flight_lock fl
+            ON fl.id = f.lock_id
+            WHERE f.id = ? AND fl.client_id != ?
+        ]]>
+    </entry>
 
 </properties>

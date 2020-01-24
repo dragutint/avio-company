@@ -37,9 +37,14 @@ public class LockingDao extends AbstractJDBCDao {
     }
 
     public Boolean isClientsLock(Integer lockId, Integer clientId) {
-        Integer cid = jdbcTemplate.queryForObject(queries.getSQL("select.client.by.lock"), Integer.class, lockId);
+        Integer cid = getClientIdByLockId(lockId);
+
         if(cid == clientId)
             return true;
         return false;
+    }
+
+    public Integer getClientIdByLockId(Integer lockId) {
+        return jdbcTemplate.queryForObject(queries.getSQL("select.client.by.lock"), Integer.class, lockId);
     }
 }

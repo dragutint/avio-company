@@ -40,16 +40,17 @@ public class ReservationController {
     @GetMapping("/{flightId}")
     @PreAuthorize("hasAnyAuthority('client')")
     public String reserve(Model model, @PathVariable Integer flightId) throws InterruptedException {
-        if(flightService.locked(flightId)){
+        String username = LoginController.getPrincipal();
+        Client c = clientService.getByUsername(username);
+
+        if(flightService.locked(flightId, c.getId())){
             log.error("Error: flight is locked");
             model.addAttribute("exception", new Exception("Flight is locked"));
             return "error";
         }
 
-        String username = LoginController.getPrincipal();
 
         Reservation reservation = new Reservation();
-        Client c = clientService.getByUsername(username);
         Flight f = flightService.getById(flightId);
         reservation.setFlight(f);
         reservation.setClient(c);
