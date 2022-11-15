@@ -25,7 +25,7 @@
     <springframework.version>5.2.3.RELEASE</springframework.version>
     <spring-security-version>5.1.4.RELEASE</spring-security-version>
     <postgre.version>9.4.1212</postgre.version>
-    <fasterxml.jackson.version>2.10.1</fasterxml.jackson.version>
+    <fasterxml.jackson.version>2.12.7.1</fasterxml.jackson.version>
     <webjars-font-awesome.version>5.1.0</webjars-font-awesome.version>
     <webjars-select2.version>4.0.12</webjars-select2.version>
     <webjars-select2-bootstrap.version>1.4.6</webjars-select2-bootstrap.version>
